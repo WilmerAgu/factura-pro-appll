@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1090406212319",
+    "project_id": "facturapro-3188e",
+    "storage_bucket": "facturapro-3188e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090406212319:android:decf90f79fc1508fb33f6a",
+        "android_client_info": {
+          "package_name": "com.example.facturapro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpuVh9Cki10dqUpJBg4RonRY3iqEF5ye4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
