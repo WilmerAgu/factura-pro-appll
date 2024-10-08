@@ -14,6 +14,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class gastos extends AppCompatActivity {
 
+    private Button btnCancelarGasto;
+    private ImageView ivCerrarSesionGastos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

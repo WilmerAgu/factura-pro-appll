@@ -17,8 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class login extends AppCompatActivity {
 
-    private EditText etInputLoginUserName;
-    private EditText etInputLoginUserPassword;
+    private EditText etInputLoginUserName, etInputLoginUserPassword;
     private Button btnIniciarSesion;
 
 

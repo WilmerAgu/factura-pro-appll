@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:background="@drawable/fondo_degradado"
         android:gravity="center"
         android:text=" Ingresar Factura"
@@ -28,7 +28,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="12dp"
         android:drawablePadding="12dp"
         android:hint="Factura N°"
@@ -110,8 +110,8 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="@color/verde"
         android:text="Guardar"
         android:textSize="17dp"
@@ -122,20 +122,21 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="250dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="@color/rojo"
         android:text="Cancelar"
         android:textSize="17dp"
         android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/ivCerrarSesionIngresarFactura"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_below="@+id/etFecha"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="150dp"
         app:srcCompat="@drawable/baseline_logout2"/>
 
 </RelativeLayout>

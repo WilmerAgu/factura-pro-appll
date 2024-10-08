@@ -27,7 +27,7 @@ public class FacturaDao {
 
     public void insert(Factura factura, OnSuccessListener<String> listener) {
         Map<String, Object> facturaData = new HashMap<>();
-        facturaData.put("factura", factura.getNumeroFactura());
+        facturaData.put("numeroFactura ", factura.getNumeroFactura());
         facturaData.put("monto", factura.getMonto());
         facturaData.put("categoria", factura.getCategoria());
         facturaData.put("vendedor", factura.getVendedor());
@@ -49,7 +49,7 @@ public class FacturaDao {
 
     public void update(String id, Factura factura, OnSuccessListener<Boolean> listener) {
         Map<String, Object> facturaData = new HashMap<>();
-        facturaData.put("factura", factura.getNumeroFactura());
+        facturaData.put("numeroFactura", factura.getNumeroFactura());
         facturaData.put("monto", factura.getMonto());
         facturaData.put("categoria", factura.getCategoria());
         facturaData.put("vendedor", factura.getVendedor());

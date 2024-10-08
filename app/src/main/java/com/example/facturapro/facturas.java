@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,6 +14,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class facturas extends AppCompatActivity {
+
+    private Button btnBucarFactura, btnIngresarFactura;
+    private ImageView ivCerrarSesionFacturas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +30,22 @@ public class facturas extends AppCompatActivity {
         });
         ImageView ivCerrarSesionFacturas = findViewById(R.id.ivCerrarSesionFacturas);
         Button btnIngresarFactura = findViewById(R.id.btnIngresarFactura);
+        Button btnBucarFactura = findViewById(R.id.btnBucarFactura);
+
 
 
         ivCerrarSesionFacturas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(facturas.this, login.class);
+                startActivity(intent);
+            }
+        });
+
+        btnBucarFactura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(facturas.this, buscarFactura.class);
                 startActivity(intent);
             }
         });

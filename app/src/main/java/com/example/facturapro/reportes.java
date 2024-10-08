@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class reportes extends AppCompatActivity {
 
+    private ImageView ivCerrarSesionReportes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
