@@ -13,12 +13,12 @@ import com.example.facturapro.data.model.Factura;
 
 import java.util.List;
 
-public class FacturaAdapter extends RecyclerView.Adapter<FacturaAdapter.FacturaViewHolder> {
+public class FacturaAdapter extends RecyclerView.Adapter<FacturaAdapter.ViewHolder> {
 
-    private List<Factura> facturaList;
+    private List<Factura> factura;
 
-    public FacturaAdapter(List<Factura> facturaList) {
-        this.facturaList = facturaList;
+    public FacturaAdapter(List<Factura> factura) {
+        this.factura = factura;
     }
 
     private OnItemClickListener listener;
@@ -33,17 +33,21 @@ public class FacturaAdapter extends RecyclerView.Adapter<FacturaAdapter.FacturaV
 
     @NonNull
     @Override
-    public FacturaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FacturaAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.lista_facturas, parent, false);
-        return new FacturaViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FacturaViewHolder holder, int position) {
-        Factura factura = facturaList.get(position);
-        holder.numeroFactura.setText(factura.getNumeroFactura());  // 'numero' es un campo de la clase Factura
+    public void onBindViewHolder(@NonNull FacturaAdapter.ViewHolder holder, int position) {
+        Factura factura = this.factura.get(position);
+
+        holder.numeroFactura.setText(factura.getNumeroFactura());
         holder.categoria.setText(factura.getCategoria());
+        holder.fecha.setText(factura.getFecha());
+
+
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
@@ -54,18 +58,23 @@ public class FacturaAdapter extends RecyclerView.Adapter<FacturaAdapter.FacturaV
 
     @Override
     public int getItemCount() {
-        return facturaList.size();
+        return factura.size();
     }
 
-    public class FacturaViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView numeroFactura;
         public TextView categoria;
+        public TextView fecha;
 
-        public FacturaViewHolder(@NonNull View itemView) {
+
+
+
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             numeroFactura = itemView.findViewById(R.id.tvListaNumeroFactura);
             categoria = itemView.findViewById(R.id.tvListaCategoria);
+            fecha = itemView.findViewById(R.id.tvListaFecha);
 
         }
     }

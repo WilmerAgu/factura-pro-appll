@@ -1,12 +1,10 @@
 package com.example.facturapro;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class menu extends AppCompatActivity {
+public class Menu extends AppCompatActivity {
     private Button btnFacturas, btnGastos, btnReportes;
     private ImageView ivCerrarSesionMenu;
 
@@ -38,7 +36,7 @@ public class menu extends AppCompatActivity {
         btnFacturas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(menu.this, facturas.class);
+                Intent intent = new Intent(Menu.this, Facturas.class);
                 startActivity(intent);
             }
         });
@@ -46,7 +44,7 @@ public class menu extends AppCompatActivity {
         btnGastos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( menu.this, gastos.class);
+                Intent intent = new Intent( Menu.this, Gastos.class);
                 startActivity(intent
                 );
             }
@@ -55,7 +53,7 @@ public class menu extends AppCompatActivity {
         btnReportes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( menu.this, reportes.class);
+                Intent intent = new Intent( Menu.this, Reportes.class);
                 startActivity(intent
                 );
             }
@@ -64,7 +62,7 @@ public class menu extends AppCompatActivity {
         ivCerrarSesionMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(menu.this, login.class);
+                Intent intent = new Intent(Menu.this, Login.class);
                 startActivity(intent);
             }
         });

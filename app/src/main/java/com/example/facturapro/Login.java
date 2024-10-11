@@ -13,9 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.textfield.TextInputEditText;
-
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     private EditText etInputLoginUserName, etInputLoginUserPassword;
     private Button btnIniciarSesion;
@@ -46,10 +44,10 @@ public class login extends AppCompatActivity {
                 String passwordCorrect = "1";
 
                 if (user.equals(userCorrect) && password.equals(passwordCorrect)){
-                    Intent intent = new Intent(login.this, menu.class);
+                    Intent intent = new Intent(Login.this, Menu.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(login.this, "Usuario o Contraseña Incorrecto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Usuario o Contraseña Incorrecto", Toast.LENGTH_SHORT).show();
                 }
 
             }

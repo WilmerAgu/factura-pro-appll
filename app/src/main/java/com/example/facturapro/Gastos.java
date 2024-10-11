@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,54 +12,48 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class facturas extends AppCompatActivity {
+public class Gastos extends AppCompatActivity {
 
-    private Button btnBucarFactura, btnIngresarFactura;
-    private ImageView ivCerrarSesionFacturas;
+    private Button btnCancelarGasto;
+    private ImageView ivCerrarSesionGastos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_facturas);
+        setContentView(R.layout.activity_gastos);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageView ivCerrarSesionFacturas = findViewById(R.id.ivCerrarSesionFacturas);
-        Button btnIngresarFactura = findViewById(R.id.btnIngresarFactura);
-        Button btnBucarFactura = findViewById(R.id.btnBucarFactura);
 
+        ImageView ivCerrarSesionGastos = findViewById(R.id.ivCerrarSesionGastos);
 
-
-        ivCerrarSesionFacturas.setOnClickListener(new View.OnClickListener() {
+        ivCerrarSesionGastos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(facturas.this, login.class);
+                Intent intent = new Intent(Gastos.this, Login.class);
+                startActivity(intent);
+            }
+        });
+        Button btnCancelarGasto = findViewById(R.id.btnCancelarGasto);
+        ImageView ivCerrarSesionGasto = findViewById(R.id.ivCerrarSesionGastos);
+
+        btnCancelarGasto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Gastos.this, Menu.class);
                 startActivity(intent);
             }
         });
 
-        btnBucarFactura.setOnClickListener(new View.OnClickListener() {
+        ivCerrarSesionGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(facturas.this, buscarFactura.class);
+                Intent intent = new Intent(Gastos.this, Login.class);
                 startActivity(intent);
             }
         });
-
-        btnIngresarFactura.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(facturas.this, ingresarFactura.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-
-
     }
 }

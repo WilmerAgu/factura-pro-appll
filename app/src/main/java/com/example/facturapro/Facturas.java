@@ -1,5 +1,6 @@
 package com.example.facturapro;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,48 +13,57 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class gastos extends AppCompatActivity {
+import com.example.facturapro.data.dao.FacturaDao;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-    private Button btnCancelarGasto;
-    private ImageView ivCerrarSesionGastos;
+public class Facturas extends AppCompatActivity {
 
+    private Button btnBucarFactura, btnIngresarFactura;
+    private ImageView ivCerrarSesionFacturas;
+    private FacturaDao facturaDao;
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_gastos);
+        setContentView(R.layout.activity_facturas);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        ImageView ivCerrarSesionGastos = findViewById(R.id.ivCerrarSesionGastos);
+        ivCerrarSesionFacturas = findViewById(R.id.ivCerrarSesionFacturas);
+        btnIngresarFactura = findViewById(R.id.btnIngresarFactura);
+        btnBucarFactura = findViewById(R.id.btnBucarFactura);
 
-        ivCerrarSesionGastos.setOnClickListener(new View.OnClickListener() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        facturaDao = new FacturaDao(db);
+
+        btnBucarFactura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(gastos.this, login.class);
-                startActivity(intent);
-            }
-        });
-        Button btnCancelarGasto = findViewById(R.id.btnCancelarGasto);
-        ImageView ivCerrarSesionGasto = findViewById(R.id.ivCerrarSesionGastos);
-
-        btnCancelarGasto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(gastos.this, menu.class);
+                Intent intent = new Intent(Facturas.this, BuscarFactura.class);
                 startActivity(intent);
             }
         });
 
-        ivCerrarSesionGasto.setOnClickListener(new View.OnClickListener() {
+        btnIngresarFactura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(gastos.this, login.class);
+                Intent intent = new Intent(Facturas.this, IngresarFactura.class);
                 startActivity(intent);
             }
         });
+        ivCerrarSesionFacturas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Facturas.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

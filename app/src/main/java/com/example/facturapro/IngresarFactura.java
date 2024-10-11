@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
 
-public class ingresarFactura extends AppCompatActivity {
+public class IngresarFactura extends AppCompatActivity {
 
     private Button btnGuardarFactura, btnCancelarfactura;
     private EditText etNumeroFactura, etMonto, etCategoria, etVendedor, etCiudad, etFecha;
@@ -61,7 +61,7 @@ public class ingresarFactura extends AppCompatActivity {
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        ingresarFactura.this,
+                        IngresarFactura.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
@@ -110,7 +110,7 @@ public class ingresarFactura extends AppCompatActivity {
         btnCancelarFactura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ingresarFactura.this, facturas.class);
+                Intent intent = new Intent(IngresarFactura.this, Facturas.class);
                 startActivity(intent);
             }
         });
@@ -118,7 +118,7 @@ public class ingresarFactura extends AppCompatActivity {
         ivCerrarSesionIngresarFactura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ingresarFactura.this, login.class);
+                Intent intent = new Intent(IngresarFactura.this, Login.class);
                 startActivity(intent);
             }
         });

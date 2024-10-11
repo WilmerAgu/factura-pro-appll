@@ -27,7 +27,7 @@ public class FacturaDao {
 
     public void insert(Factura factura, OnSuccessListener<String> listener) {
         Map<String, Object> facturaData = new HashMap<>();
-        facturaData.put("numeroFactura ", factura.getNumeroFactura());
+        facturaData.put("numeroFactura", factura.getNumeroFactura());
         facturaData.put("monto", factura.getMonto());
         facturaData.put("categoria", factura.getCategoria());
         facturaData.put("vendedor", factura.getVendedor());
@@ -84,26 +84,24 @@ public class FacturaDao {
                     }
                 });
     }
-    public void getAll(OnSuccessListener<List<Factura>> listener) {
+    public void getAllFacturas(OnSuccessListener<List<Factura>> listener) {
         db.collection(COLLECTION_NAME)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        List<Factura> userList = new ArrayList<>();
-                        for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                            Factura factura = documentSnapshot.toObject(Factura.class);
-                            userList.add(factura);
-                        }
-                        listener.onSuccess(userList);
-                    } else {
-                        listener.onSuccess(null);
+                    List<Factura> facturaList = new ArrayList<>();
+                    for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        Factura factura = documentSnapshot.toObject(Factura.class);
+                        facturaList.add(factura);
                     }
+                    Log.d(TAG, "Facturas cargadas: " + facturaList.size());
+                    listener.onSuccess(facturaList);
                 })
                 .addOnFailureListener(e -> {
-                    Log.e(TAG, "onFailure: ", e);
+                    Log.e(TAG, "Error al cargar facturas", e);
                     listener.onSuccess(null);
                 });
     }
+
     public void delete(String id, OnSuccessListener<Boolean> listener) {
         db.collection(COLLECTION_NAME)
                 .document(id)

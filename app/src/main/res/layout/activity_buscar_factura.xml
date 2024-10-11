@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ingresarFactura">
+    tools:context=".IngresarFactura">
 
     <TextView
         android:id="@+id/textView"
@@ -21,40 +21,45 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvfactura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tvFactura"
+        android:layout_width="110dp"
+        android:layout_height="20dp"
         android:layout_below="@+id/textView"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="0dp"
-        android:text="factura N°"
-        android:textSize="18sp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="20dp"
+        android:text="Número Factura"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="DuplicateIds,MissingConstraints" />
+        />
     <TextView
-        android:id="@+id/tvVendedor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tvCategoria"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
         android:layout_below="@+id/textView"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="20dp"
         android:text="Categoria"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="DuplicateIds,MissingConstraints" />
+        />
+    <TextView
+        android:id="@+id/tvFecha"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/textView"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="20dp"
+        android:text="Fecha"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewFacturas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tvVendedor"
-        android:layout_marginTop="-3dp" />
+        android:layout_below="@+id/tvFactura"
+        />
 
 
 </RelativeLayout>
