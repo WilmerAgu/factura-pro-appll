@@ -1,5 +1,6 @@
 package com.example.facturapro;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -48,6 +49,20 @@ public class BuscarFactura extends AppCompatActivity {
                 // Inicializar el adapter con la lista de facturas
                 facturaAdapter = new FacturaAdapter(facturas);
                 recyclerViewFacturas.setAdapter(facturaAdapter);
+
+                // Configurar el listener de clic para cada item
+                facturaAdapter.setOnItemClickListener(factura -> {
+                    // Navegar a InformeFactura y pasar los datos
+                    Intent intent = new Intent(BuscarFactura.this, InformeFactura.class);
+                    intent.putExtra("numeroFactura", factura.getNumeroFactura());
+                    intent.putExtra("categoria", factura.getCategoria());
+                    /*intent.putExtra("fecha", factura.getFecha());*/
+                    intent.putExtra("monto", factura.getMonto());
+                    intent.putExtra("vendedor", factura.getVendedor());
+                    intent.putExtra("ciudad", factura.getCiudad());
+
+                    startActivity(intent);
+                });
             }
         });
     }
