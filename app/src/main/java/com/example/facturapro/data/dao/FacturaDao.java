@@ -2,7 +2,7 @@ package com.example.facturapro.data.dao;
 
 import android.util.Log;
 
-import com.example.facturapro.data.model.Factura;
+import com.example.facturapro.data.model.FacturaModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -18,54 +18,51 @@ public class FacturaDao {
 
     private final FirebaseFirestore db;
 
-
-    public FacturaDao(FirebaseFirestore db)
-    {
+    public FacturaDao(FirebaseFirestore db) {
         this.db = db;
     }
 
-
-    public void insert(Factura factura, OnSuccessListener<String> listener) {
-        Map<String, Object> facturaData = new HashMap<>();
-        facturaData.put("numeroFactura", factura.getNumeroFactura());
-        facturaData.put("monto", factura.getMonto());
-        facturaData.put("categoria", factura.getCategoria());
-        facturaData.put("vendedor", factura.getVendedor());
-        facturaData.put("ciudad", factura.getCiudad());
-        facturaData.put("fecha", factura.getFecha());
+    // Método para insertar una nueva factura
+    public void insert(FacturaModel factura, OnSuccessListener<String> listener) {
+        Map<String, Object> facturaData = mapFacturaToData(factura);
 
         db.collection(COLLECTION_NAME)
                 .add(facturaData)
                 .addOnSuccessListener(documentReference -> {
-                    Log.d(TAG, "onSuccess: " + documentReference.getId());
+                    Log.d(TAG, "Factura insertada: " + documentReference.getId());
                     listener.onSuccess(documentReference.getId());
                 })
                 .addOnFailureListener(e -> {
-                    Log.e(TAG, "onFailure: ", e);
+                    Log.e(TAG, "Error al insertar factura: ", e);
                     listener.onSuccess(null);
                 });
     }
 
-
-    public void update(String id, Factura factura, OnSuccessListener<Boolean> listener) {
-        Map<String, Object> facturaData = new HashMap<>();
-        facturaData.put("numeroFactura", factura.getNumeroFactura());
-        facturaData.put("monto", factura.getMonto());
-        facturaData.put("categoria", factura.getCategoria());
-        facturaData.put("vendedor", factura.getVendedor());
-        facturaData.put("ciudad", factura.getCiudad());
-        facturaData.put("fecha", factura.getFecha());
+    // Método para actualizar una factura existente
+    public void update(String id, FacturaModel factura, OnSuccessListener<Boolean> listener) {
+        if (id == null || id.isEmpty()) {
+            Log.e(TAG, "ID de factura es nulo o vacío. No se puede actualizar.");
+            if (listener != null) listener.onSuccess(false);
+            return;
+        }
+        Map<String, Object> facturaData = mapFacturaToData(factura);
 
         db.collection(COLLECTION_NAME)
                 .document(id)
                 .update(facturaData)
-                .addOnSuccessListener(unused -> listener.onSuccess(true))
+                .addOnSuccessListener(unused -> {
+                    Log.d(TAG, "Factura actualizada correctamente con ID: " + id);
+                    if (listener != null) listener.onSuccess(true);
+                })
                 .addOnFailureListener(e -> {
-                    Log.e(TAG, "onFailure: ", e);
-                    listener.onSuccess(false);
+                    Log.e(TAG, "Error al actualizar factura con ID: " + id, e);
+                    if (listener != null) listener.onSuccess(false);
                 });
     }
-    public void getById(String id, OnSuccessListener<Factura> listener) {
+
+
+    // Método para obtener una factura por su ID
+    public void getById(String id, OnSuccessListener<FacturaModel> listener) {
         db.collection(COLLECTION_NAME)
                 .document(id)
                 .get()
@@ -73,25 +70,30 @@ public class FacturaDao {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                            Factura factura = document.toObject(Factura.class);
+                            FacturaModel factura = document.toObject(FacturaModel.class);
                             listener.onSuccess(factura);
                         } else {
                             listener.onSuccess(null);
                         }
                     } else {
-                        Log.e(TAG, "onComplete: ", task.getException());
+                        Log.e(TAG, "Error al obtener la factura: ", task.getException());
                         listener.onSuccess(null);
                     }
                 });
     }
-    public void getAllFacturas(OnSuccessListener<List<Factura>> listener) {
+
+    // Método para obtener todas las facturas
+    public void getAllFacturas(OnSuccessListener<List<FacturaModel>> listener) {
         db.collection(COLLECTION_NAME)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<Factura> facturaList = new ArrayList<>();
+                    List<FacturaModel> facturaList = new ArrayList<>();
                     for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                        Factura factura = documentSnapshot.toObject(Factura.class);
-                        facturaList.add(factura);
+                        FacturaModel factura = documentSnapshot.toObject(FacturaModel.class);
+                        if (factura != null) {
+                            factura.setId(documentSnapshot.getId()); // Guardar el ID
+                            facturaList.add(factura);
+                        }
                     }
                     Log.d(TAG, "Facturas cargadas: " + facturaList.size());
                     listener.onSuccess(facturaList);
@@ -102,15 +104,27 @@ public class FacturaDao {
                 });
     }
 
+    // Método para eliminar una factura por su ID
     public void delete(String id, OnSuccessListener<Boolean> listener) {
         db.collection(COLLECTION_NAME)
                 .document(id)
                 .delete()
                 .addOnSuccessListener(unused -> listener.onSuccess(true))
                 .addOnFailureListener(e -> {
-                    Log.e(TAG, "onFailure: ", e);
+                    Log.e(TAG, "Error al eliminar factura: ", e);
                     listener.onSuccess(false);
                 });
     }
 
+    // Método privado para convertir FacturaModel a un Map<String, Object>
+    private Map<String, Object> mapFacturaToData(FacturaModel factura) {
+        Map<String, Object> facturaData = new HashMap<>();
+        facturaData.put("numeroFactura", factura.getNumeroFactura());
+        facturaData.put("monto", factura.getMonto());
+        facturaData.put("categoria", factura.getCategoria());
+        facturaData.put("vendedor", factura.getVendedor());
+        facturaData.put("ciudad", factura.getCiudad());
+        facturaData.put("fecha", factura.getFecha());
+        return facturaData;
+    }
 }

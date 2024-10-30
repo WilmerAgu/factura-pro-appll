@@ -16,7 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.facturapro.data.dao.FacturaDao;
-import com.example.facturapro.data.model.Factura;
+import com.example.facturapro.data.model.FacturaModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -81,7 +81,7 @@ public class IngresarFactura extends AppCompatActivity {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                 FacturaDao facturaDao = new FacturaDao(db);
-                Factura factura = new Factura();
+                FacturaModel factura = new FacturaModel();
                 factura.setNumeroFactura(etNumeroFactura.getText().toString());
                 factura.setMonto(etMonto.getText().toString());
                 factura.setCategoria(etCategoria.getText().toString());

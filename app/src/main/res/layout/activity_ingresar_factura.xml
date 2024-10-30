@@ -116,7 +116,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="40dp"
         android:layout_marginBottom="80dp"
-        android:backgroundTint="@color/verde"
+        android:backgroundTint="@color/azul_principal"
         android:text="Guardar"
         android:textSize="17dp"
         android:textStyle="bold" />

@@ -3,28 +3,27 @@ package com.example.facturapro.data.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.facturapro.R;
-import com.example.facturapro.data.model.Factura;
+import com.example.facturapro.data.model.FacturaModel;
 
 import java.util.List;
 
 public class FacturaAdapter extends RecyclerView.Adapter<FacturaAdapter.ViewHolder> {
 
-    private List<Factura> factura;
+    private List<FacturaModel> factura;
 
-    public FacturaAdapter(List<Factura> factura) {
+    public FacturaAdapter(List<FacturaModel> factura) {
         this.factura = factura;
     }
 
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
-        void onItemClick(Factura factura);
+        void onItemClick(FacturaModel factura);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -41,7 +40,7 @@ public class FacturaAdapter extends RecyclerView.Adapter<FacturaAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull FacturaAdapter.ViewHolder holder, int position) {
-        Factura factura = this.factura.get(position);
+        FacturaModel factura = this.factura.get(position);
 
         holder.numeroFactura.setText(factura.getNumeroFactura());
         holder.categoria.setText(factura.getCategoria());

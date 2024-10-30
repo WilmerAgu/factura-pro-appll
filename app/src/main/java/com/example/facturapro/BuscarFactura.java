@@ -26,45 +26,46 @@ public class BuscarFactura extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_buscar_factura);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        // Inicializar RecyclerView
+
         recyclerViewFacturas = findViewById(R.id.recyclerViewFacturas);
         recyclerViewFacturas.setLayoutManager(new LinearLayoutManager(this));
 
-        // Inicializar FacturaDao para obtener las facturas
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         facturaDao = new FacturaDao(db);
 
-        // Cargar las facturas y configurar el RecyclerView
         cargarFacturas();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarFacturas(); // Refrescar la lista de facturas al volver
     }
 
     private void cargarFacturas() {
         facturaDao.getAllFacturas(facturas -> {
             if (facturas != null && !facturas.isEmpty()) {
-                // Inicializar el adapter con la lista de facturas
                 facturaAdapter = new FacturaAdapter(facturas);
                 recyclerViewFacturas.setAdapter(facturaAdapter);
 
-                // Configurar el listener de clic para cada item
                 facturaAdapter.setOnItemClickListener(factura -> {
-                    // Navegar a InformeFactura y pasar los datos
                     Intent intent = new Intent(BuscarFactura.this, InformeFactura.class);
+                    intent.putExtra("id", factura.getId());
                     intent.putExtra("numeroFactura", factura.getNumeroFactura());
                     intent.putExtra("categoria", factura.getCategoria());
-                    /*intent.putExtra("fecha", factura.getFecha());*/
+                    intent.putExtra("fecha", factura.getFecha());
                     intent.putExtra("monto", factura.getMonto());
                     intent.putExtra("vendedor", factura.getVendedor());
                     intent.putExtra("ciudad", factura.getCiudad());
-
                     startActivity(intent);
                 });
             }
         });
     }
-
 }

@@ -1,8 +1,10 @@
 package com.example.facturapro.data.model;
 
-public class Factura {
+import java.util.HashMap;
+import java.util.Map;
 
-    private String id;
+public class FacturaModel {
+    private String id; // Para almacenar el ID de la factura
     private String numeroFactura;
     private String monto;
     private String categoria;
@@ -10,10 +12,13 @@ public class Factura {
     private String ciudad;
     private String fecha;
 
-    public Factura() {
+    // Constructor vacío necesario para Firestore
+    public FacturaModel() {
     }
 
-    public Factura(String numeroFactura, String monto, String categoria, String vendedor, String ciudad, String fecha) {
+    public FacturaModel(String id, String numeroFactura, String monto, String categoria,
+                        String vendedor, String ciudad, String fecha) {
+        this.id = id;
         this.numeroFactura = numeroFactura;
         this.monto = monto;
         this.categoria = categoria;
@@ -22,6 +27,9 @@ public class Factura {
         this.fecha = fecha;
     }
 
+
+
+    // Getters y Setters
     public String getId() {
         return id;
     }
