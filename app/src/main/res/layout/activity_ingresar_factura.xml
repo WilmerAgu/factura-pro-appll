@@ -64,6 +64,7 @@
         android:drawablePadding="12dp"
         android:hint="Categoria"
         android:minHeight="48dp" />
+
     <EditText
         android:id="@+id/etVendedor"
         android:layout_width="0dp"
