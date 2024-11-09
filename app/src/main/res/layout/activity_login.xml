@@ -40,7 +40,6 @@
         android:drawableStart="@drawable/baseline_account_box_24"
         android:drawablePadding="12dp"
         android:hint="Usuario"
-        android:text="a"
         android:minHeight="48dp" />
 
     <EditText
@@ -55,7 +54,6 @@
         android:drawableStart="@drawable/baseline_lock_24"
         android:drawablePadding="12dp"
         android:hint="Contraseña"
-        android:text="1"
         android:minHeight="48dp"
         android:inputType="textPassword" />
 

@@ -51,8 +51,8 @@
 
 
 
-    <EditText
-        android:id="@+id/etCategoria"
+    <Spinner
+        android:id="@+id/spinnerCategoria"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etMonto"
@@ -65,11 +65,11 @@
         android:hint="Categoria"
         android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/etVendedor"
+    <Spinner
+        android:id="@+id/spinnerVendedor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etCategoria"
+        android:layout_below="@+id/spinnerCategoria"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="12dp"
@@ -79,11 +79,11 @@
         android:hint="Vendedor"
         android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/etCiudad"
+    <Spinner
+        android:id="@+id/spinnerCiudad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etVendedor"
+        android:layout_below="@+id/spinnerVendedor"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="12dp"
@@ -97,7 +97,7 @@
         android:id="@+id/etFecha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etCiudad"
+        android:layout_below="@+id/spinnerCiudad"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="12dp"
