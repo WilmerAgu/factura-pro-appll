@@ -18,7 +18,8 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <EditText
         android:id="@+id/etNumeroFactura"
@@ -31,8 +32,9 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="14dp"
         android:drawablePadding="12dp"
-        android:hint="Factura N°"
-        android:minHeight="48dp" />
+        android:hint="  Ingrese El número de la Factura"
+        android:minHeight="48dp"
+        android:background="@drawable/underline_spinner"/>
 
 
     <EditText
@@ -46,8 +48,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
         android:drawablePadding="12dp"
-        android:hint="Monto"
-        android:minHeight="48dp" />
+        android:hint="  Ingrese el Monto"
+        android:minHeight="48dp"
+        android:background="@drawable/underline_spinner"/>
 
 
 
@@ -62,8 +65,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
         android:drawablePadding="12dp"
-        android:hint="Categoria"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:background="@drawable/underline_spinner"/>
 
     <Spinner
         android:id="@+id/spinnerVendedor"
@@ -76,8 +79,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
         android:drawablePadding="12dp"
-        android:hint="Vendedor"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:background="@drawable/underline_spinner"/>
 
     <Spinner
         android:id="@+id/spinnerCiudad"
@@ -91,7 +94,8 @@
         android:layout_marginEnd="12dp"
         android:drawablePadding="12dp"
         android:hint="Ciudad"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:background="@drawable/underline_spinner" />
 
     <EditText
         android:id="@+id/etFecha"
@@ -105,10 +109,11 @@
         android:layout_marginEnd="12dp"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Fecha"
+        android:hint=" Seleccione la Fecha"
         android:inputType="date"
         android:minHeight="48dp"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:background="@drawable/underline_spinner"/>
 
     <Button
         android:id="@+id/btnGuardarFactura"

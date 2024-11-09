@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,15 +21,19 @@ import com.example.facturapro.data.model.FacturaModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class InformeFactura extends AppCompatActivity {
 
     private static final String TAG = "InformeFactura";
 
-    private EditText etNumeroFactura, etMonto, etCategoria, etVendedor, etCiudad, etFecha;
+    private EditText etNumeroFactura, etMonto, etFecha;
     private Button btnActualizarFactura, btnEliminarfactura, btnCancelarfactura;
     private FacturaDao facturaDao;
     private FacturaModel selectedFactura;
     private String selectedFacturaId;
+    private Spinner spinnerCategoria, spinnerVendedor, spinnerCiudad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +47,12 @@ public class InformeFactura extends AppCompatActivity {
             return insets;
         });
 
+        // Inicializar vistas
         etNumeroFactura = findViewById(R.id.etNumeroFactura);
         etMonto = findViewById(R.id.etMonto);
-        etCategoria = findViewById(R.id.etCategoria);
-        etVendedor = findViewById(R.id.etVendedor);
-        etCiudad = findViewById(R.id.etCiudad);
+        spinnerCategoria = findViewById(R.id.spinnerCategoria);
+        spinnerVendedor = findViewById(R.id.spinnerVendedor);
+        spinnerCiudad = findViewById(R.id.spinnerCiudad);
         etFecha = findViewById(R.id.etFecha);
         btnActualizarFactura = findViewById(R.id.btnActualizarFactura);
         btnEliminarfactura = findViewById(R.id.btnEliminarfactura);
@@ -53,6 +60,10 @@ public class InformeFactura extends AppCompatActivity {
 
         facturaDao = new FacturaDao(FirebaseFirestore.getInstance());
 
+        // Cargar datos en los Spinners
+        cargarDatosSpinners();
+
+        // Obtener el ID de la factura seleccionada
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             selectedFacturaId = extras.getString("id");
@@ -63,12 +74,20 @@ public class InformeFactura extends AppCompatActivity {
                 return;
             }
 
+            // Establecer valores en los EditText
             etNumeroFactura.setText(extras.getString("numeroFactura", ""));
             etMonto.setText(extras.getString("monto", ""));
-            etCategoria.setText(extras.getString("categoria", ""));
-            etVendedor.setText(extras.getString("vendedor", ""));
-            etCiudad.setText(extras.getString("ciudad", ""));
             etFecha.setText(extras.getString("fecha", ""));
+
+            // Obtener valores para los Spinners
+            String categoria = extras.getString("categoria", "");
+            String vendedor = extras.getString("vendedor", "");
+            String ciudad = extras.getString("ciudad", "");
+
+            // Establecer selección en los Spinners
+            setSpinnerSelection(spinnerCategoria, categoria);
+            setSpinnerSelection(spinnerVendedor, vendedor);
+            setSpinnerSelection(spinnerCiudad, ciudad);
 
             facturaDao.getById(selectedFacturaId, factura -> {
                 if (factura != null) {
@@ -79,6 +98,7 @@ public class InformeFactura extends AppCompatActivity {
             });
         }
 
+        // Botón para actualizar factura
         btnActualizarFactura.setOnClickListener(view -> {
             if (selectedFactura == null) {
                 Toast.makeText(InformeFactura.this, "Por favor, espera a que se cargue la factura.", Toast.LENGTH_SHORT).show();
@@ -87,9 +107,9 @@ public class InformeFactura extends AppCompatActivity {
 
             String numeroFactura = etNumeroFactura.getText().toString().trim();
             String monto = etMonto.getText().toString().trim();
-            String categoria = etCategoria.getText().toString().trim();
-            String vendedor = etVendedor.getText().toString().trim();
-            String ciudad = etCiudad.getText().toString().trim();
+            String categoria = spinnerCategoria.getSelectedItem().toString().trim();
+            String vendedor = spinnerVendedor.getSelectedItem().toString().trim();
+            String ciudad = spinnerCiudad.getSelectedItem().toString().trim();
             String fecha = etFecha.getText().toString().trim();
 
             if (numeroFactura.isEmpty() || monto.isEmpty() || categoria.isEmpty() || vendedor.isEmpty() || ciudad.isEmpty() || fecha.isEmpty()) {
@@ -115,18 +135,16 @@ public class InformeFactura extends AppCompatActivity {
             });
         });
 
+        // Botón para eliminar factura
         btnEliminarfactura.setOnClickListener(v -> {
             if (selectedFacturaId != null) {
-                facturaDao.delete(selectedFacturaId, new OnSuccessListener<Boolean>() {
-                    @Override
-                    public void onSuccess(Boolean isSuccess) {
-                        if (isSuccess) {
-                            Toast.makeText(InformeFactura.this, "Factura eliminada", Toast.LENGTH_SHORT).show();
-                            setResult(RESULT_OK);
-                            finish();
-                        } else {
-                            Toast.makeText(InformeFactura.this, "Error al eliminar la factura", Toast.LENGTH_SHORT).show();
-                        }
+                facturaDao.delete(selectedFacturaId, isSuccess -> {
+                    if (isSuccess) {
+                        Toast.makeText(InformeFactura.this, "Factura eliminada", Toast.LENGTH_SHORT).show();
+                        setResult(RESULT_OK);
+                        finish();
+                    } else {
+                        Toast.makeText(InformeFactura.this, "Error al eliminar la factura", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
@@ -134,9 +152,38 @@ public class InformeFactura extends AppCompatActivity {
             }
         });
 
+        // Botón para cancelar
         btnCancelarfactura.setOnClickListener(view -> {
             Intent intent = new Intent(InformeFactura.this, BuscarFactura.class);
             startActivity(intent);
         });
+    }
+
+    private void cargarDatosSpinners() {
+        List<String> categorias = Arrays.asList("Audífonos", "DDS", "Celular", "Tablet", "Laptop");
+        List<String> vendedores = Arrays.asList("Selecciona un vendedor", "Carlos Morales", "Tatiana Salas", "Camila Guzman",
+                "Sergio Torres", "Luisa Gomez", "Daniel Salinas", "Ana Florez", "Andres Escobar", "Juan Quiroz", "Marcela Ocampo");
+        List<String> ciudades = Arrays.asList("Selecciona una ciudad", "Bogotá", "Medellín", "Cali", "Barranquilla", "Manizales");
+
+        ArrayAdapter<String> categoriaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
+        ArrayAdapter<String> vendedorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, vendedores);
+        ArrayAdapter<String> ciudadAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ciudades);
+
+        categoriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        vendedorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ciudadAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerCategoria.setAdapter(categoriaAdapter);
+        spinnerVendedor.setAdapter(vendedorAdapter);
+        spinnerCiudad.setAdapter(ciudadAdapter);
+    }
+
+    private void setSpinnerSelection(Spinner spinner, String value) {
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).toString().equals(value)) {
+                spinner.setSelection(i);
+                return;
+            }
+        }
     }
 }
