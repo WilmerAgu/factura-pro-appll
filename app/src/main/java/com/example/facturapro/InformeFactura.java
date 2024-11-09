@@ -161,9 +161,13 @@ public class InformeFactura extends AppCompatActivity {
 
     private void cargarDatosSpinners() {
         List<String> categorias = Arrays.asList("Audífonos", "DDS", "Celular", "Tablet", "Laptop");
-        List<String> vendedores = Arrays.asList("Selecciona un vendedor", "Carlos Morales", "Tatiana Salas", "Camila Guzman",
-                "Sergio Torres", "Luisa Gomez", "Daniel Salinas", "Ana Florez", "Andres Escobar", "Juan Quiroz", "Marcela Ocampo");
-        List<String> ciudades = Arrays.asList("Selecciona una ciudad", "Bogotá", "Medellín", "Cali", "Barranquilla", "Manizales");
+
+        List<String> vendedores = Arrays.asList("Selecciona un vendedor", "Carlos Morales", "Tatiana Salas",
+                "Camila Guzman","Sergio Torres", "Luisa Gomez", "Daniel Salinas", "Ana Florez",
+                "Andres Escobar", "Juan Quiroz", "Marcela Ocampo");
+
+        List<String> ciudades = Arrays.asList("Selecciona una ciudad", "Bogotá", "Medellín", "Cali",
+                "Barranquilla", "Manizales");
 
         ArrayAdapter<String> categoriaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
         ArrayAdapter<String> vendedorAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, vendedores);

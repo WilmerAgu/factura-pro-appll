@@ -62,7 +62,7 @@ public class Menu extends AppCompatActivity {
         ivCerrarSesionMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu.this, Login.class);
+                Intent intent = new Intent(Menu.this, MainActivity.class);
                 startActivity(intent);
             }
         });

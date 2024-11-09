@@ -60,7 +60,7 @@ public class Facturas extends AppCompatActivity {
         ivCerrarSesionFacturas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Facturas.this, Login.class);
+                Intent intent = new Intent(Facturas.this, MainActivity.class);
                 startActivity(intent);
             }
         });
