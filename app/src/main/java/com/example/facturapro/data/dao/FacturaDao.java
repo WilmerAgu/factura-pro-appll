@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class FacturaDao {
     private static final String TAG = "FacturaDao";
-    private static final String COLLECTION_NAME = "facturas";
+    private static final String COLLECTION_NAME = "facturapro";
 
     private final FirebaseFirestore db;
 

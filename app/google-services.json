@@ -12,7 +12,20 @@
           "package_name": "com.example.facturapro"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1090406212319-jh3rspbpabe0du526t7cg5833rq7t6kk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.facturapro",
+            "certificate_hash": "7defd996159f3431eca4dddf04a52768dfcae149"
+          }
+        },
+        {
+          "client_id": "1090406212319-662updthvv9s3oheli0jbu7l04h8hcvb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDpuVh9Cki10dqUpJBg4RonRY3iqEF5ye4"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090406212319-662updthvv9s3oheli0jbu7l04h8hcvb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
