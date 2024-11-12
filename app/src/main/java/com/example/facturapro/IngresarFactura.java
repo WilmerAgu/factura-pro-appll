@@ -187,10 +187,6 @@ public class IngresarFactura extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Acción para cerrar sesión
-        ivCerrarSesionIngresarFactura.setOnClickListener(view -> {
-            Intent intent = new Intent(IngresarFactura.this, Login.class);
-            startActivity(intent);
-        });
+
     }
 }

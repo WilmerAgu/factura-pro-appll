@@ -183,7 +183,7 @@ public class IngresarEgreso extends AppCompatActivity {
 
         // Acción del botón cancelar factura
         btnCancelarEgreso.setOnClickListener(view -> {
-            Intent intent = new Intent(IngresarEgreso.this, Facturas.class);
+            Intent intent = new Intent(IngresarEgreso.this, Egresos.class);
             startActivity(intent);
         });
 

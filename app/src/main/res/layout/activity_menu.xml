@@ -46,7 +46,7 @@
         android:layout_margin="15dp"
         android:backgroundTint="@color/azul_principal"
         android:drawableLeft="@drawable/baseline_gastos1"
-        android:text="Gastos"
+        android:text="Egresos"
         android:textSize="28dp"
         app:cornerRadius="15dp" />
 

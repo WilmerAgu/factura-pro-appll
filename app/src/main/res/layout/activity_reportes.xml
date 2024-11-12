@@ -50,6 +50,20 @@
                 android:text="Ingresos"
                 android:textColor="@color/azul_secundario"
                 android:textSize="20sp" />
+            <!-- Campo de búsqueda por fecha -->
+            <EditText
+                android:id="@+id/dateSearchIngresos"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:drawableLeft="@drawable/baseline_calendar_month_24"
+                android:hint="Buscar por fecha"
+                android:importantForAccessibility="yes"
+                android:inputType="date"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
 
             <!-- Fila para los iconos de PDF y Excel -->
             <LinearLayout
@@ -82,12 +96,46 @@
 
             </LinearLayout>
 
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <!-- Contenedor para los filtros y opciones de "Ingresos" -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardContainerEgresos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardContainerIngresos"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="@color/white">
+
+        <!-- Contenido dentro del CardView de Ingresos -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Título del contenedor de Ingresos -->
+            <TextView
+                android:id="@+id/titleEgresos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Egresos"
+                android:textColor="@color/azul_secundario"
+                android:textSize="20sp" />
+
             <!-- Campo de búsqueda por fecha -->
             <EditText
-                android:id="@+id/dateSearchIngresos"
+                android:id="@+id/dateSearchEgresos"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:contentDescription="Campo para buscar por fecha"
                 android:drawableLeft="@drawable/baseline_calendar_month_24"
                 android:hint="Buscar por fecha"
                 android:importantForAccessibility="yes"
@@ -96,6 +144,39 @@
                 android:paddingEnd="16dp"
                 android:textColor="#333333"
                 android:textSize="14sp" />
+
+            <!-- Fila para los iconos de PDF y Excel -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <!-- Icono PDF -->
+                <ImageView
+                    android:id="@+id/pdfIconEgresos"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:srcCompat="@drawable/icono_pdf"
+                    android:contentDescription="Exportar como PDF"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <!-- Icono Excel -->
+                <ImageView
+                    android:id="@+id/excelIconEgresos"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:clickable="true"
+                    android:contentDescription="Exportar como Excel"
+                    android:focusable="true"
+                    app:srcCompat="@drawable/icono_excel" />
+
+            </LinearLayout>
+
+
 
 
         </LinearLayout>
