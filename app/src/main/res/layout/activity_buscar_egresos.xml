@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IngresarFactura">
+    tools:context=".BuscarEgresos">
+
 
     <TextView
         android:id="@+id/textView"
@@ -13,14 +14,14 @@
         android:layout_height="150dp"
         android:background="@drawable/fondo_degradado"
         android:gravity="center"
-        android:text=" Buscar Factura"
+        android:text=" Buscar Egresos"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="36sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvFactura"
+        android:id="@+id/tvFacturaEgreso"
         android:layout_width="110dp"
         android:layout_height="20dp"
         android:layout_below="@+id/textView"
@@ -31,7 +32,7 @@
         android:textStyle="bold"
         />
     <TextView
-        android:id="@+id/tvCategoria"
+        android:id="@+id/tvCategoriaEgreso"
         android:layout_width="70dp"
         android:layout_height="20dp"
         android:layout_below="@+id/textView"
@@ -42,7 +43,7 @@
         android:textStyle="bold"
         />
     <TextView
-        android:id="@+id/tvFecha"
+        android:id="@+id/tvFechaEgreso"
         android:layout_width="50dp"
         android:layout_height="20dp"
         android:layout_below="@+id/textView"
@@ -54,11 +55,12 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewFacturas"
+        android:id="@+id/recyclerViewEgresos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tvFactura"
+        android:layout_below="@+id/tvFacturaEgreso"
         />
+
 
 
 </RelativeLayout>

@@ -12,48 +12,58 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Gastos extends AppCompatActivity {
+import com.example.facturapro.data.dao.EgresosDao;
+import com.example.facturapro.data.dao.FacturaDao;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-    private Button btnCancelarGasto;
-    private ImageView ivCerrarSesionGastos;
+public class Egresos extends AppCompatActivity {
+
+    private Button btnBucarEgreso, btnIngresarEgreso;
+    private ImageView ivCerrarSesionEgreso;
+    private EgresosDao egresosDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_gastos);
+        setContentView(R.layout.activity_egresos);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        ImageView ivCerrarSesionGastos = findViewById(R.id.ivCerrarSesionGastos);
+        ivCerrarSesionEgreso = findViewById(R.id.ivCerrarSesionEgreso);
+        btnIngresarEgreso = findViewById(R.id.btnIngresarEgreso);
+        btnBucarEgreso = findViewById(R.id.btnBucarEgresos);
 
-        ivCerrarSesionGastos.setOnClickListener(new View.OnClickListener() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        egresosDao = new EgresosDao(db);
+
+        btnBucarEgreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Gastos.this, Login.class);
-                startActivity(intent);
-            }
-        });
-        Button btnCancelarGasto = findViewById(R.id.btnCancelarGasto);
-        ImageView ivCerrarSesionGasto = findViewById(R.id.ivCerrarSesionGastos);
-
-        btnCancelarGasto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Gastos.this, Menu.class);
+                Intent intent = new Intent(Egresos.this, BuscarEgresos.class);
                 startActivity(intent);
             }
         });
 
-        ivCerrarSesionGasto.setOnClickListener(new View.OnClickListener() {
+        btnIngresarEgreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Gastos.this, Login.class);
+                Intent intent = new Intent(Egresos.this, IngresarEgreso.class);
                 startActivity(intent);
             }
         });
+        ivCerrarSesionEgreso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Egresos.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 }

@@ -1,7 +1,6 @@
 package com.example.facturapro.data.model;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class FacturaModel {
     private String id; // Para almacenar el ID de la factura

@@ -44,7 +44,7 @@ public class Menu extends AppCompatActivity {
         btnGastos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( Menu.this, Gastos.class);
+                Intent intent = new Intent( Menu.this, Egresos.class);
                 startActivity(intent
                 );
             }

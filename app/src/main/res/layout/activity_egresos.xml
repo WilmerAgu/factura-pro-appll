@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Egresos">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/fondo_degradado"
+        android:text="Egresos"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btnBucarEgresos"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/azul_principal"
+        android:text="Buscar Egreso"
+        android:textSize="28sp"
+        app:cornerRadius="15dp"
+        android:drawableLeft="@drawable/baseline_content_paste_search_24"/>
+
+    <Button
+        android:id="@+id/btnIngresarEgreso"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/btnBucarEgresos"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/azul_principal"
+        android:text="Ingresar Egreso"
+        android:textSize="28sp"
+        app:cornerRadius="15dp"
+        android:drawableLeft="@drawable/baseline_file_upload_24"
+        />
+    <ImageView
+        android:id="@+id/ivRetrocederFacturas"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btnIngresarEgreso"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="70dp"
+        />
+    <ImageView
+        android:id="@+id/ivCerrarSesionEgreso"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btnIngresarEgreso"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="100dp"
+        app:srcCompat="@drawable/baseline_logout2"/>
+
+</RelativeLayout>

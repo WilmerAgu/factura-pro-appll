@@ -2,8 +2,6 @@ package com.example.facturapro;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.facturapro.data.dao.FacturaDao;
 import com.example.facturapro.data.model.FacturaModel;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;

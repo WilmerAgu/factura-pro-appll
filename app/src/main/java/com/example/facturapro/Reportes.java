@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Reportes extends AppCompatActivity {
 
-    private ImageView ivCerrarSesionReportes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +26,10 @@ public class Reportes extends AppCompatActivity {
             return insets;
         });
 
-        ImageView ivCerrarSesionReportes = findViewById(R.id.ivCerrarSesionReportes);
 
 
-        ivCerrarSesionReportes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Reportes.this, Login.class);
-                startActivity(intent);
-            }
-        });
+
+
 
     }
 }
