@@ -33,7 +33,6 @@
         android:layout_marginEnd="16dp"
         app:cardBackgroundColor="@color/white">
 
-        <!-- Contenido dentro del CardView de Ingresos -->
         <LinearLayout
             android:orientation="vertical"
             android:padding="16dp"
@@ -50,6 +49,7 @@
                 android:text="Ingresos"
                 android:textColor="@color/azul_secundario"
                 android:textSize="20sp" />
+
             <!-- Campo de búsqueda por fecha -->
             <EditText
                 android:id="@+id/dateSearchIngresos"
@@ -57,62 +57,59 @@
                 android:layout_height="48dp"
                 android:drawableLeft="@drawable/baseline_calendar_month_24"
                 android:hint="Buscar por Fecha"
-                android:importantForAccessibility="yes"
                 android:inputType="date"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:textColor="#333333"
                 android:textSize="14sp" />
+
+            <!-- Campo de búsqueda por número de factura -->
             <EditText
-                android:id="@+id/searchNUmeroFactura"
+                android:id="@+id/searchNumeroFactura"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:drawableLeft="@drawable/baseline_fact_check_24_blue"
                 android:hint="Buscar por Número de Factura"
-                android:importantForAccessibility="yes"
-                android:inputType="date"
+                android:inputType="text"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
-
-            <!-- Fila para los iconos de PDF y Excel -->
+            <!-- Fila para los iconos de PDF y Excel centrados -->
             <LinearLayout
                 android:orientation="horizontal"
-                android:gravity="start"
+                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp">
 
-                <!-- Icono PDF -->
                 <ImageView
                     android:id="@+id/pdfIcon"
                     android:layout_width="40dp"
                     android:layout_height="48dp"
-                    app:srcCompat="@drawable/icono_pdf"
-                    android:contentDescription="Exportar como PDF"
+                    android:layout_marginTop="15dp"
                     android:layout_marginEnd="16dp"
                     android:clickable="true"
-                    android:focusable="true" />
+                    android:contentDescription="Exportar como PDF"
+                    app:srcCompat="@drawable/icono_pdf"
+                    tools:ignore="TouchTargetSizeCheck" />
 
-                <!-- Icono Excel -->
                 <ImageView
                     android:id="@+id/excelIcon"
                     android:layout_width="40dp"
                     android:layout_height="48dp"
+                    android:layout_marginTop="15dp"
                     android:clickable="true"
                     android:contentDescription="Exportar como Excel"
-                    android:focusable="true"
-                    app:srcCompat="@drawable/icono_excel" />
-
+                    app:srcCompat="@drawable/icono_excel"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
-
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-    <!-- Contenedor para los filtros y opciones de "Ingresos" -->
+
+    <!-- Contenedor para los filtros y opciones de "Egresos" -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContainerEgresos"
         android:layout_width="match_parent"
@@ -125,14 +122,13 @@
         android:layout_marginEnd="16dp"
         app:cardBackgroundColor="@color/white">
 
-        <!-- Contenido dentro del CardView de Ingresos -->
         <LinearLayout
             android:orientation="vertical"
             android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Título del contenedor de Ingresos -->
+            <!-- Título del contenedor de Egresos -->
             <TextView
                 android:id="@+id/titleEgresos"
                 android:layout_width="wrap_content"
@@ -149,59 +145,53 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:drawableLeft="@drawable/baseline_calendar_month_24"
-                android:hint="Buscar por fecha"
-                android:importantForAccessibility="yes"
+                android:hint="Buscar por Fecha"
                 android:inputType="date"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:textColor="#333333"
                 android:textSize="14sp" />
+
+            <!-- Campo de búsqueda por número de factura -->
             <EditText
-                android:id="@+id/searchNUmeroFacturaEgresos"
+                android:id="@+id/searchNumeroFacturaEgresos"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:drawableLeft="@drawable/baseline_fact_check_24_blue"
                 android:hint="Buscar por Número de Factura"
-                android:importantForAccessibility="yes"
-                android:inputType="date"
+                android:inputType="text"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:textColor="#333333"
                 android:textSize="14sp" />
 
-            <!-- Fila para los iconos de PDF y Excel -->
+            <!-- Fila para los iconos de PDF y Excel centrados -->
             <LinearLayout
                 android:orientation="horizontal"
-                android:gravity="start"
+                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp">
 
-                <!-- Icono PDF -->
                 <ImageView
                     android:id="@+id/pdfIconEgresos"
                     android:layout_width="40dp"
                     android:layout_height="48dp"
-                    app:srcCompat="@drawable/icono_pdf"
-                    android:contentDescription="Exportar como PDF"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginTop="15dp"
                     android:clickable="true"
-                    android:focusable="true" />
+                    android:contentDescription="Exportar como PDF"
+                    app:srcCompat="@drawable/icono_pdf" />
 
-                <!-- Icono Excel -->
                 <ImageView
                     android:id="@+id/excelIconEgresos"
                     android:layout_width="40dp"
                     android:layout_height="48dp"
+                    android:layout_marginTop="15dp"
                     android:clickable="true"
                     android:contentDescription="Exportar como Excel"
-                    android:focusable="true"
                     app:srcCompat="@drawable/icono_excel" />
-
             </LinearLayout>
-
-
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
