@@ -12,7 +12,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MenuActivity extends AppCompatActivity {
+    private FirebaseAuth auth;
     private Button btnFacturas, btnGastos, btnReportes;
     private ImageView ivCerrarSesionMenu;
 
@@ -27,10 +30,10 @@ public class MenuActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button btnFacturas = findViewById(R.id.btnFacturas);
-        Button btnGastos = findViewById(R.id.btnGastos);
-        Button btnReportes = findViewById(R.id.btnReportes);
-        ImageView ivCerrarSesionMenu = findViewById(R.id.ivCerrarSesionMenu);
+        btnFacturas = findViewById(R.id.btnFacturas);
+        btnGastos = findViewById(R.id.btnGastos);
+        btnReportes = findViewById(R.id.btnReportes);
+        ivCerrarSesionMenu = findViewById(R.id.ivCerrarSesionMenu);
 
 
         btnFacturas.setOnClickListener(new View.OnClickListener() {
@@ -59,12 +62,26 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        ivCerrarSesionMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MenuActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+
+        auth = FirebaseAuth.getInstance();
+        ivCerrarSesionMenu = findViewById(R.id.ivCerrarSesionMenu);
+
+        ivCerrarSesionMenu.setOnClickListener(view -> {
+            auth.signOut();
+            Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (auth.getCurrentUser() == null) {
+            Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
 }

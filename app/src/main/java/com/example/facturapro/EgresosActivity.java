@@ -13,10 +13,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.facturapro.data.dao.EgresosDao;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EgresosActivity extends AppCompatActivity {
 
+    private FirebaseAuth auth;
     private Button btnBucarEgreso, btnIngresarEgreso;
     private ImageView ivCerrarSesionEgreso;
     private EgresosDao egresosDao;
@@ -62,7 +64,26 @@ public class EgresosActivity extends AppCompatActivity {
             }
         });
 
+        auth = FirebaseAuth.getInstance();
+        ivCerrarSesionEgreso = findViewById(R.id.ivCerrarSesionEgreso);
 
+        ivCerrarSesionEgreso.setOnClickListener(view -> {
+            auth.signOut();
+            Intent intent = new Intent(EgresosActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (auth.getCurrentUser() == null) {
+            Intent intent = new Intent(EgresosActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+
 }

@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.facturapro.data.dao.FacturaDao;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FacturasActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class FacturasActivity extends AppCompatActivity {
     private Button btnBucarFactura, btnIngresarFactura;
     private ImageView ivCerrarSesionFacturas;
     private FacturaDao facturaDao;
-
+    private FirebaseAuth auth;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -64,6 +65,24 @@ public class FacturasActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        auth = FirebaseAuth.getInstance();
+        ivCerrarSesionFacturas = findViewById(R.id.ivCerrarSesionFacturas);
 
+        ivCerrarSesionFacturas.setOnClickListener(view -> {
+            auth.signOut();
+            Intent intent = new Intent(FacturasActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (auth.getCurrentUser() == null) {
+            Intent intent = new Intent(FacturasActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }
