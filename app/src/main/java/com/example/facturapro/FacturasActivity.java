@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.facturapro.data.dao.FacturaDao;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Facturas extends AppCompatActivity {
+public class FacturasActivity extends AppCompatActivity {
 
     private Button btnBucarFactura, btnIngresarFactura;
     private ImageView ivCerrarSesionFacturas;
@@ -45,7 +45,7 @@ public class Facturas extends AppCompatActivity {
         btnBucarFactura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Facturas.this, BuscarFactura.class);
+                Intent intent = new Intent(FacturasActivity.this, BuscarFacturaActivity.class);
                 startActivity(intent);
             }
         });
@@ -53,14 +53,14 @@ public class Facturas extends AppCompatActivity {
         btnIngresarFactura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Facturas.this, IngresarFactura.class);
+                Intent intent = new Intent(FacturasActivity.this, IngresarFacturaActivity.class);
                 startActivity(intent);
             }
         });
         ivCerrarSesionFacturas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Facturas.this, MainActivity.class);
+                Intent intent = new Intent(FacturasActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

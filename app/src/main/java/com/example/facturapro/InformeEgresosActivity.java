@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Arrays;
 import java.util.List;
 
-public class InformeEgresos extends AppCompatActivity {
+public class InformeEgresosActivity extends AppCompatActivity {
 
     private static final String TAG = "InformeEgresos";
 
@@ -96,7 +96,7 @@ public class InformeEgresos extends AppCompatActivity {
         // Botón para actualizar factura
         btnActualizarEgreso.setOnClickListener(view -> {
             if (selectedEgreso == null) {
-                Toast.makeText(InformeEgresos.this, "Por favor, espera a que se cargue la factura.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InformeEgresosActivity.this, "Por favor, espera a que se cargue la factura.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -109,7 +109,7 @@ public class InformeEgresos extends AppCompatActivity {
 
             if (numeroFacturaEgreso.isEmpty() || montoEgreso.isEmpty() || categoriaEgreso.isEmpty()
                     || modoPago.isEmpty() || estadoPago.isEmpty() || fechaEgreso.isEmpty()) {
-                Toast.makeText(InformeEgresos.this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InformeEgresosActivity.this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -122,11 +122,11 @@ public class InformeEgresos extends AppCompatActivity {
 
             egresosDao.update(selectedEgresoId, selectedEgreso, isSuccess -> {
                 if (isSuccess) {
-                    Toast.makeText(InformeEgresos.this, "Egreso Actualizado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InformeEgresosActivity.this, "Egreso Actualizado", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
                     finish();
                 } else {
-                    Toast.makeText(InformeEgresos.this, "Error al actualizar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InformeEgresosActivity.this, "Error al actualizar", Toast.LENGTH_SHORT).show();
                 }
             });
         });
@@ -135,21 +135,21 @@ public class InformeEgresos extends AppCompatActivity {
             if (selectedEgresoId != null) {
                 egresosDao.delete(selectedEgresoId, isSuccess -> {
                     if (isSuccess) {
-                        Toast.makeText(InformeEgresos.this, "Factura eliminada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InformeEgresosActivity.this, "Factura eliminada", Toast.LENGTH_SHORT).show();
                         setResult(RESULT_OK);
                         finish();
                     } else {
-                        Toast.makeText(InformeEgresos.this, "Error al eliminar la factura", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InformeEgresosActivity.this, "Error al eliminar la factura", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
-                Toast.makeText(InformeEgresos.this, "Seleccione una factura para eliminar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InformeEgresosActivity.this, "Seleccione una factura para eliminar", Toast.LENGTH_SHORT).show();
             }
         });
 
         // Botón para cancelar
         btnCancelarEgreso.setOnClickListener(view -> {
-            Intent intent = new Intent(InformeEgresos.this, BuscarEgresos.class);
+            Intent intent = new Intent(InformeEgresosActivity.this, BuscarEgresosActivity.class);
             startActivity(intent);
         });
 

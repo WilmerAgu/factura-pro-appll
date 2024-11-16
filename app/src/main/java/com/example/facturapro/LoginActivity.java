@@ -27,10 +27,10 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private static final int REQ_ONE_TAP = 2;  // Puedes usar cualquier entero único
+    private static final int REQ_ONE_TAP = 2;
 
     private FirebaseAuth auth;
     private SignInClient oneTapClient;
@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         // Inicializar el cliente One Tap
-        oneTapClient = Identity.getSignInClient(Login.this);
+        oneTapClient = Identity.getSignInClient(LoginActivity.this);
 
         // Construir el request de inicio de sesión
         signInRequest = BeginSignInRequest.builder()
@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity {
 
         // Validaciones básicas
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(Login.this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -102,14 +102,14 @@ public class Login extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         // Login exitoso
                         FirebaseUser user = auth.getCurrentUser();
-                        Toast.makeText(Login.this, "Login exitoso", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Login exitoso", Toast.LENGTH_SHORT).show();
                         // Aquí puedes redirigir al usuario a la siguiente actividad
-                        Intent intent = new Intent(Login.this, Menu.class);
+                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
                         // Login fallido
-                        Toast.makeText(Login.this, "Error en el login: " +
+                        Toast.makeText(LoginActivity.this, "Error en el login: " +
                                 task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -121,13 +121,13 @@ public class Login extends AppCompatActivity {
 
         // Validaciones básicas
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(Login.this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Validar longitud de contraseña
         if (password.length() < 6) {
-            Toast.makeText(Login.this, "La contraseña debe tener al menos 6 caracteres",
+            Toast.makeText(LoginActivity.this, "La contraseña debe tener al menos 6 caracteres",
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -137,12 +137,12 @@ public class Login extends AppCompatActivity {
 
         // Intentar registro
         auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(Login.this, task -> {
+                .addOnCompleteListener(LoginActivity.this, task -> {
                     btnRegistro.setEnabled(true);
                     if (task.isSuccessful()) {
                         // Registro exitoso
                         FirebaseUser user = auth.getCurrentUser();
-                        Toast.makeText(Login.this, "Registro exitoso",
+                        Toast.makeText(LoginActivity.this, "Registro exitoso",
                                 Toast.LENGTH_SHORT).show();
                         // Aquí puedes redirigir al usuario a la siguiente actividad
                         // Intent intent = new Intent(MainActivity.this, HomeActivity.class);
@@ -150,7 +150,7 @@ public class Login extends AppCompatActivity {
                         // finish();
                     } else {
                         // Registro fallido
-                        Toast.makeText(Login.this, "Error en el registro: " +
+                        Toast.makeText(LoginActivity.this, "Error en el registro: " +
                                 task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -159,7 +159,7 @@ public class Login extends AppCompatActivity {
     // Iniciar el flujo de inicio de sesión con Google One Tap
     private void signIn() {
         oneTapClient.beginSignIn(signInRequest)
-                .addOnSuccessListener(Login.this, result -> {
+                .addOnSuccessListener(LoginActivity.this, result -> {
 
                     try {
                         startIntentSenderForResult(
@@ -223,7 +223,7 @@ public class Login extends AppCompatActivity {
         if (user != null) {
             // El usuario ha iniciado sesión
             // Redirigir a la actividad de inicio de sesión
-            Intent intent = new Intent(Login.this, Menu.class);
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
         } else {
@@ -239,7 +239,7 @@ public class Login extends AppCompatActivity {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             // Usuario ya logueado, redirigir a la actividad principal
-            Intent intent = new Intent(Login.this, Menu.class);
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
         }

@@ -13,10 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.facturapro.data.dao.EgresosDao;
-import com.example.facturapro.data.dao.FacturaDao;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Egresos extends AppCompatActivity {
+public class EgresosActivity extends AppCompatActivity {
 
     private Button btnBucarEgreso, btnIngresarEgreso;
     private ImageView ivCerrarSesionEgreso;
@@ -43,7 +42,7 @@ public class Egresos extends AppCompatActivity {
         btnBucarEgreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Egresos.this, BuscarEgresos.class);
+                Intent intent = new Intent(EgresosActivity.this, BuscarEgresosActivity.class);
                 startActivity(intent);
             }
         });
@@ -51,14 +50,14 @@ public class Egresos extends AppCompatActivity {
         btnIngresarEgreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Egresos.this, IngresarEgreso.class);
+                Intent intent = new Intent(EgresosActivity.this, IngresarEgresoActivity.class);
                 startActivity(intent);
             }
         });
         ivCerrarSesionEgreso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Egresos.this, MainActivity.class);
+                Intent intent = new Intent(EgresosActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

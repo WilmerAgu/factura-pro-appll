@@ -15,40 +15,37 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".IngresarEgreso"
+            android:name=".IngresarEgresoActivity"
             android:exported="false" />
         <activity
-            android:name=".InformeEgresos"
+            android:name=".InformeEgresosActivity"
             android:exported="false" />
         <activity
-            android:name=".Egresos"
+            android:name=".EgresosActivity"
             android:exported="false" />
         <activity
-            android:name=".BuscarEgresos"
+            android:name=".BuscarEgresosActivity"
             android:exported="false" />
         <activity
-            android:name=".InformeFactura"
+            android:name=".InformeFacturaActivity"
             android:exported="false" />
         <activity
-            android:name=".BuscarFactura"
+            android:name=".BuscarFacturaActivity"
             android:exported="false" />
         <activity
-            android:name=".IngresarFactura"
+            android:name=".IngresarFacturaActivity"
             android:exported="true" />
         <activity
-            android:name=".Reportes"
+            android:name=".ReportesActivity"
             android:exported="false" />
         <activity
-            android:name=".Gastos"
+            android:name=".FacturasActivity"
             android:exported="false" />
         <activity
-            android:name=".Facturas"
+            android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".Menu"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

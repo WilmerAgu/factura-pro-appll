@@ -21,7 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Arrays;
 import java.util.List;
 
-public class InformeFactura extends AppCompatActivity {
+public class InformeFacturaActivity extends AppCompatActivity {
 
     private static final String TAG = "InformeFactura";
 
@@ -98,7 +98,7 @@ public class InformeFactura extends AppCompatActivity {
         // Botón para actualizar factura
         btnActualizarFactura.setOnClickListener(view -> {
             if (selectedFactura == null) {
-                Toast.makeText(InformeFactura.this, "Por favor, espera a que se cargue la factura.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InformeFacturaActivity.this, "Por favor, espera a que se cargue la factura.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -110,7 +110,7 @@ public class InformeFactura extends AppCompatActivity {
             String fecha = etFecha.getText().toString().trim();
 
             if (numeroFactura.isEmpty() || monto.isEmpty() || categoria.isEmpty() || vendedor.isEmpty() || ciudad.isEmpty() || fecha.isEmpty()) {
-                Toast.makeText(InformeFactura.this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InformeFacturaActivity.this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -123,11 +123,11 @@ public class InformeFactura extends AppCompatActivity {
 
             facturaDao.update(selectedFacturaId, selectedFactura, isSuccess -> {
                 if (isSuccess) {
-                    Toast.makeText(InformeFactura.this, "Factura Actualizada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InformeFacturaActivity.this, "Factura Actualizada", Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK);
                     finish();
                 } else {
-                    Toast.makeText(InformeFactura.this, "Error al actualizar", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InformeFacturaActivity.this, "Error al actualizar", Toast.LENGTH_SHORT).show();
                 }
             });
         });
@@ -137,21 +137,21 @@ public class InformeFactura extends AppCompatActivity {
             if (selectedFacturaId != null) {
                 facturaDao.delete(selectedFacturaId, isSuccess -> {
                     if (isSuccess) {
-                        Toast.makeText(InformeFactura.this, "Factura eliminada", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InformeFacturaActivity.this, "Factura eliminada", Toast.LENGTH_SHORT).show();
                         setResult(RESULT_OK);
                         finish();
                     } else {
-                        Toast.makeText(InformeFactura.this, "Error al eliminar la factura", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InformeFacturaActivity.this, "Error al eliminar la factura", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
-                Toast.makeText(InformeFactura.this, "Seleccione una factura para eliminar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InformeFacturaActivity.this, "Seleccione una factura para eliminar", Toast.LENGTH_SHORT).show();
             }
         });
 
         // Botón para cancelar
         btnCancelarfactura.setOnClickListener(view -> {
-            Intent intent = new Intent(InformeFactura.this, BuscarFactura.class);
+            Intent intent = new Intent(InformeFacturaActivity.this, BuscarFacturaActivity.class);
             startActivity(intent);
         });
     }

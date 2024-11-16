@@ -15,7 +15,7 @@ import com.example.facturapro.data.adapter.FacturaAdapter;
 import com.example.facturapro.data.dao.FacturaDao;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class BuscarFactura extends AppCompatActivity {
+public class BuscarFacturaActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewFacturas;
     private FacturaAdapter facturaAdapter;
@@ -55,7 +55,7 @@ public class BuscarFactura extends AppCompatActivity {
                 recyclerViewFacturas.setAdapter(facturaAdapter);
 
                 facturaAdapter.setOnItemClickListener(factura -> {
-                    Intent intent = new Intent(BuscarFactura.this, InformeFactura.class);
+                    Intent intent = new Intent(BuscarFacturaActivity.this, InformeFacturaActivity.class);
                     intent.putExtra("id", factura.getId());
                     intent.putExtra("numeroFactura", factura.getNumeroFactura());
                     intent.putExtra("categoria", factura.getCategoria());

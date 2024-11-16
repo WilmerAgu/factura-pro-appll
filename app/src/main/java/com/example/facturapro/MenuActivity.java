@@ -12,7 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Menu extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
     private Button btnFacturas, btnGastos, btnReportes;
     private ImageView ivCerrarSesionMenu;
 
@@ -36,7 +36,7 @@ public class Menu extends AppCompatActivity {
         btnFacturas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu.this, Facturas.class);
+                Intent intent = new Intent(MenuActivity.this, FacturasActivity.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +44,7 @@ public class Menu extends AppCompatActivity {
         btnGastos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( Menu.this, Egresos.class);
+                Intent intent = new Intent( MenuActivity.this, EgresosActivity.class);
                 startActivity(intent
                 );
             }
@@ -53,7 +53,7 @@ public class Menu extends AppCompatActivity {
         btnReportes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent( Menu.this, Reportes.class);
+                Intent intent = new Intent( MenuActivity.this, ReportesActivity.class);
                 startActivity(intent
                 );
             }
@@ -62,7 +62,7 @@ public class Menu extends AppCompatActivity {
         ivCerrarSesionMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu.this, MainActivity.class);
+                Intent intent = new Intent(MenuActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

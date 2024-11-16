@@ -12,12 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.facturapro.data.adapter.EgresosAdapter;
-import com.example.facturapro.data.adapter.FacturaAdapter;
 import com.example.facturapro.data.dao.EgresosDao;
-import com.example.facturapro.data.dao.FacturaDao;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class BuscarEgresos extends AppCompatActivity {
+public class BuscarEgresosActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewEgresos;
     private EgresosAdapter egresosAdapter;
@@ -57,7 +55,7 @@ public class BuscarEgresos extends AppCompatActivity {
                 recyclerViewEgresos.setAdapter(egresosAdapter);
 
                 egresosAdapter.setOnItemClickListener(egreso -> {
-                    Intent intent = new Intent(BuscarEgresos.this, InformeEgresos.class);
+                    Intent intent = new Intent(BuscarEgresosActivity.this, InformeEgresosActivity.class);
                     intent.putExtra("id", egreso.getId());
                     intent.putExtra("numeroFacturaEgreso", egreso.getNumeroFacturaEgreso());
                     intent.putExtra("categoriaEgreso", egreso.getCategoriaEgreso());

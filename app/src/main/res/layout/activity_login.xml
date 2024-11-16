@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -81,6 +81,7 @@
         android:textSize="17dp"
         android:textStyle="bold"
         android:backgroundTint="@color/azul_principal"/>
+
     <Button
         android:id="@+id/btnSesionGoogle"
         android:layout_width="350dp"
@@ -89,11 +90,10 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/azul_principal"
         android:text="Iniciar Sesion Con Google"
         android:textSize="17dp"
-        android:textStyle="bold"
-        android:backgroundTint="@color/azul_principal"/>
-
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
