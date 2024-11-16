@@ -56,7 +56,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:drawableLeft="@drawable/baseline_calendar_month_24"
-                android:hint="Buscar por fecha"
+                android:hint="Buscar por Fecha"
+                android:importantForAccessibility="yes"
+                android:inputType="date"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+            <EditText
+                android:id="@+id/searchNUmeroFactura"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:drawableLeft="@drawable/baseline_fact_check_24_blue"
+                android:hint="Buscar por Número de Factura"
                 android:importantForAccessibility="yes"
                 android:inputType="date"
                 android:paddingStart="16dp"
@@ -76,7 +88,7 @@
                 <!-- Icono PDF -->
                 <ImageView
                     android:id="@+id/pdfIcon"
-                    android:layout_width="48dp"
+                    android:layout_width="40dp"
                     android:layout_height="48dp"
                     app:srcCompat="@drawable/icono_pdf"
                     android:contentDescription="Exportar como PDF"
@@ -87,7 +99,7 @@
                 <!-- Icono Excel -->
                 <ImageView
                     android:id="@+id/excelIcon"
-                    android:layout_width="48dp"
+                    android:layout_width="40dp"
                     android:layout_height="48dp"
                     android:clickable="true"
                     android:contentDescription="Exportar como Excel"
@@ -144,6 +156,18 @@
                 android:paddingEnd="16dp"
                 android:textColor="#333333"
                 android:textSize="14sp" />
+            <EditText
+                android:id="@+id/searchNUmeroFacturaEgresos"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:drawableLeft="@drawable/baseline_fact_check_24_blue"
+                android:hint="Buscar por Número de Factura"
+                android:importantForAccessibility="yes"
+                android:inputType="date"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="#333333"
+                android:textSize="14sp" />
 
             <!-- Fila para los iconos de PDF y Excel -->
             <LinearLayout
@@ -156,7 +180,7 @@
                 <!-- Icono PDF -->
                 <ImageView
                     android:id="@+id/pdfIconEgresos"
-                    android:layout_width="48dp"
+                    android:layout_width="40dp"
                     android:layout_height="48dp"
                     app:srcCompat="@drawable/icono_pdf"
                     android:contentDescription="Exportar como PDF"
@@ -167,7 +191,7 @@
                 <!-- Icono Excel -->
                 <ImageView
                     android:id="@+id/excelIconEgresos"
-                    android:layout_width="48dp"
+                    android:layout_width="40dp"
                     android:layout_height="48dp"
                     android:clickable="true"
                     android:contentDescription="Exportar como Excel"

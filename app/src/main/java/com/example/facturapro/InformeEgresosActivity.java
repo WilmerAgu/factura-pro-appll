@@ -155,7 +155,7 @@ public class InformeEgresosActivity extends AppCompatActivity {
 
     }
     private void datosSpinners() {
-        List<String> categoriaEgreso = Arrays.asList("Insumos", "Marketing");
+        List<String> categoriaEgreso = Arrays.asList("Nomina", "Impuestos", "Insumos", "Marketing");
         List<String> modoPago = Arrays.asList("Efectivo", "Tarjeta de Crédito");
         List<String> estadoPago = Arrays.asList("Realizado", "Pendiente");
 

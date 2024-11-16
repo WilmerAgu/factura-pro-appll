@@ -26,6 +26,19 @@
         android:layout_marginTop="60dp"
         android:src="@drawable/baseline_account_circle_24"
     />
+    <Button
+        android:id="@+id/btnCargarImagen"
+        android:layout_width="124dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/ivLoginLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Cargar Foto"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/azul_principal"
+        android:textStyle="bold"
+        android:textSize="14dp"/>
+
 
     <EditText
         android:id="@+id/etInputLoginUserEmail"

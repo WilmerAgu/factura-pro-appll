@@ -59,7 +59,7 @@ public class IngresarEgresoActivity extends AppCompatActivity {
         etFechaEgreso.setClickable(true);
 
         // Configurar el Spinner con las categorías
-        String[] categoriaEgresos = {"Selecciona una categoría", "Insumos", "Marketing"};
+        String[] categoriaEgresos = {"Tipo de Gasto", "Nomina", "Impuestos", "Insumos", "Marketing"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categoriaEgresos);
         spCategoriaEgreso.setAdapter(adapter);
 
@@ -112,7 +112,7 @@ public class IngresarEgresoActivity extends AppCompatActivity {
         });
 
         // Listener para manejar la selección del Spinner de estado de pago
-        spEstadoPago.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spModoPago.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String ciudadSeleccionada = parent.getItemAtPosition(position).toString();
