@@ -72,7 +72,7 @@
         android:minHeight="48dp"
         android:inputType="textPassword" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/btnIniciarSesion"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -82,9 +82,10 @@
         android:layout_marginBottom="170dp"
         android:backgroundTint="@color/azul_principal"
         android:text="Iniciar Sesión"
-        android:textSize="17dp"
-        android:textStyle="bold" />
-    <Button
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
+    <android.widget.Button
         android:id="@+id/btnRegistro"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -93,11 +94,11 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="110dp"
         android:text="Crear Cuenta"
-        android:textSize="17dp"
+        android:textSize="14dp"
         android:textStyle="bold"
+        android:textColor="@color/white"
         android:backgroundTint="@color/azul_principal"/>
-
-    <Button
+    <android.widget.Button
         android:id="@+id/btnSesionGoogle"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -105,10 +106,13 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="50dp"
+        android:text="Iniciar Sesión Con Google"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:drawableStart="@drawable/googleg_standard_color_18"
         android:backgroundTint="@color/azul_principal"
-        android:text="Iniciar Sesion Con Google"
-        android:textSize="17dp"
-        android:textStyle="bold" />
+        />
 
 
 </RelativeLayout>
