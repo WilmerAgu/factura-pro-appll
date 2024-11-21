@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:background="@drawable/fondo_degradado"
         android:gravity="center"
         android:text="Reporte Ingresos y Egresos"
@@ -26,109 +26,85 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:cardBackgroundColor="@color/white">
 
+        <!-- Contenido dentro del CardView de Ingresos -->
         <LinearLayout
-            android:orientation="vertical"
-            android:padding="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <!-- Título del contenedor de Ingresos -->
             <TextView
                 android:id="@+id/titleIngresos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="Ingresos"
                 android:textColor="@color/azul_secundario"
                 android:textSize="20sp" />
 
-            <!-- Campo de búsqueda por fecha -->
-            <EditText
-                android:id="@+id/dateSearchIngresos"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:drawableLeft="@drawable/baseline_calendar_month_24"
-                android:hint="Buscar por Fecha"
-                android:inputType="date"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#333333"
-                android:textSize="14sp" />
-
-            <!-- Campo de búsqueda por número de factura -->
-            <EditText
-                android:id="@+id/searchNumeroFactura"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:drawableLeft="@drawable/baseline_fact_check_24_blue"
-                android:hint="Buscar por Número de Factura"
-                android:inputType="text"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#333333"
-                android:textSize="14sp" />
-
-            <!-- Fila para los iconos de PDF y Excel centrados -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
+            <TextView
+                android:id="@+id/tvBuscarFecha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp">
+                android:text="Buscar por  Fecha"
+                android:layout_marginTop="5dp"/>
 
-                <ImageView
-                    android:id="@+id/pdfIcon"
-                    android:layout_width="40dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="16dp"
-                    android:clickable="true"
-                    android:contentDescription="Exportar como PDF"
-                    app:srcCompat="@drawable/icono_pdf"
-                    tools:ignore="TouchTargetSizeCheck" />
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/shFecha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Buscar fecha"
+                android:textColorHint="@color/black"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/tvBucarNFactura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Buscar por Número de Factura"
+                />
 
-                <ImageView
-                    android:id="@+id/excelIcon"
-                    android:layout_width="40dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="15dp"
-                    android:clickable="true"
-                    android:contentDescription="Exportar como Excel"
-                    app:srcCompat="@drawable/icono_excel"
-                    tools:ignore="TouchTargetSizeCheck" />
-            </LinearLayout>
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/shNumeroFactura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Buscar número de factura"
+                android:layout_marginBottom="5dp"/>
+
+
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <!-- Contenedor para los filtros y opciones de "Egresos" -->
+    <!-- Contenedor para los filtros y opciones de "Ingresos" -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardContainerEgresos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cardContainerIngresos"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:cardBackgroundColor="@color/white">
 
+        <!-- Contenido dentro del CardView de Ingresos -->
         <LinearLayout
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Título del contenedor de Egresos -->
+            <!-- Título del contenedor de Ingresos -->
             <TextView
                 android:id="@+id/titleEgresos"
                 android:layout_width="wrap_content"
@@ -138,62 +114,79 @@
                 android:text="Egresos"
                 android:textColor="@color/azul_secundario"
                 android:textSize="20sp" />
-
-            <!-- Campo de búsqueda por fecha -->
-            <EditText
-                android:id="@+id/dateSearchEgresos"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:drawableLeft="@drawable/baseline_calendar_month_24"
-                android:hint="Buscar por Fecha"
-                android:inputType="date"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#333333"
-                android:textSize="14sp" />
-
-            <!-- Campo de búsqueda por número de factura -->
-            <EditText
-                android:id="@+id/searchNumeroFacturaEgresos"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:drawableLeft="@drawable/baseline_fact_check_24_blue"
-                android:hint="Buscar por Número de Factura"
-                android:inputType="text"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textColor="#333333"
-                android:textSize="14sp" />
-
-            <!-- Fila para los iconos de PDF y Excel centrados -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
+            <TextView
+                android:id="@+id/tvBuscarFechaEgresos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp">
+                android:text="Buscar por  Fecha"
+                android:layout_marginTop="5dp"/>
 
-                <ImageView
-                    android:id="@+id/pdfIconEgresos"
-                    android:layout_width="40dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginTop="15dp"
-                    android:clickable="true"
-                    android:contentDescription="Exportar como PDF"
-                    app:srcCompat="@drawable/icono_pdf" />
+            <!-- Campo de búsqueda por fecha -->
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/shFechaEgresos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Buscar fecha"
+                android:textColorHint="@color/black"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/tvBucarNFacturaEgresos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Buscar por Número de Factura"
+                />
+            <!-- Campo de búsqueda por nmero de factura-->
 
-                <ImageView
-                    android:id="@+id/excelIconEgresos"
-                    android:layout_width="40dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="15dp"
-                    android:clickable="true"
-                    android:contentDescription="Exportar como Excel"
-                    app:srcCompat="@drawable/icono_excel" />
-            </LinearLayout>
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/shNumeroFacturaEgresos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Buscar número de factura"
+                android:layout_marginBottom="5dp"/>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvBuqueda"
+        android:layout_width="383dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/cardContainerEgresos"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_below="@id/rvBuqueda">
+
+        <!-- Icono PDF -->
+        <ImageView
+            android:id="@+id/pdfIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:contentDescription="Exportar como PDF"
+            android:focusable="true"
+            app:srcCompat="@drawable/icono_pdf" />
+
+        <!-- Icono Excel -->
+        <ImageView
+            android:id="@+id/excelIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:clickable="true"
+            android:contentDescription="Exportar como Excel"
+            android:focusable="true"
+            app:srcCompat="@drawable/icono_excel" />
+
+    </LinearLayout>
 
 </RelativeLayout>

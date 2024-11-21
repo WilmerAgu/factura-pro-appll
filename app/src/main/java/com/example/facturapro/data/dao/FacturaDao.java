@@ -127,4 +127,51 @@ public class FacturaDao {
         facturaData.put("fecha", factura.getFecha());
         return facturaData;
     }
+    // Método para buscar facturas por fecha
+    public void getFacturasPorFecha(String fecha, OnSuccessListener<List<FacturaModel>> listener) {
+        db.collection(COLLECTION_NAME)
+                .whereEqualTo("fecha", fecha)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    List<FacturaModel> facturaList = new ArrayList<>();
+                    for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        FacturaModel factura = documentSnapshot.toObject(FacturaModel.class);
+                        if (factura != null) {
+                            factura.setId(documentSnapshot.getId());
+                            facturaList.add(factura);
+                        }
+                    }
+                    listener.onSuccess(facturaList);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Error al buscar facturas por fecha", e);
+                    listener.onSuccess(null);
+                });
+    }
+
+    // Método para buscar factura por número de factura
+    public void getFacturaPorNumero(String numeroFactura, OnSuccessListener<FacturaModel> listener) {
+        db.collection(COLLECTION_NAME)
+                .whereEqualTo("numeroFactura", numeroFactura)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        DocumentSnapshot documentSnapshot = queryDocumentSnapshots.getDocuments().get(0);
+                        FacturaModel factura = documentSnapshot.toObject(FacturaModel.class);
+                        if (factura != null) {
+                            factura.setId(documentSnapshot.getId());
+                            listener.onSuccess(factura);
+                        } else {
+                            listener.onSuccess(null);
+                        }
+                    } else {
+                        listener.onSuccess(null);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Error al buscar factura por número", e);
+                    listener.onSuccess(null);
+                });
+    }
+
 }
