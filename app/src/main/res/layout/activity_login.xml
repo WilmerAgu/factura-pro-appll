@@ -102,30 +102,30 @@
         android:textStyle="bold"
         tools:ignore="TextSizeCheck" />
 
-    <!--<android.widget.Button
+    <android.widget.Button
         android:id="@+id/btnSesionGoogle"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
+
         android:layout_marginStart="30dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_below="@+id/btnRegistro"
         android:backgroundTint="@color/azul_principal"
         android:drawableStart="@drawable/googleg_standard_color_18"
         android:text="Iniciar Sesión Con Google"
         android:textColor="@color/white"
         android:textSize="14dp"
         android:textStyle="bold"
-        tools:ignore="TextSizeCheck" />-->
+        tools:ignore="TextSizeCheck" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/ivSesionGoogle"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_below="@id/btnRegistro"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        app:srcCompat="@drawable/google" />
+        app:srcCompat="@drawable/google" />-->
 
 
 </RelativeLayout>

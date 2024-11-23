@@ -20,50 +20,61 @@
         android:textStyle="bold"
         android:gravity="center"/>
 
-    <Button
-        android:id="@+id/btnBucarFactura"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="250dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bnt1"
+        android:layout_below="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/azul_principal"
-        android:text="Buscar Factura"
-        android:textSize="28sp"
-        app:cornerRadius="15dp"
-        android:drawableLeft="@drawable/baseline_content_paste_search_24"/>
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="50dp"
+        app:cardBackgroundColor="#8003A9F4">
 
-    <Button
-        android:id="@+id/btnIngresarFactura"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/btnBucarFactura"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="20dp"
-        android:backgroundTint="@color/azul_principal"
-        android:text="Ingresar Factura"
-        android:textSize="28sp"
-        app:cornerRadius="15dp"
-        android:drawableLeft="@drawable/baseline_file_upload_24"
-        />
-    <ImageView
-        android:id="@+id/ivRetrocederFacturas"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/btnIngresarFactura"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="70dp"
-        />
+        <Button
+            android:id="@+id/btnBucarFactura"
+            android:layout_below="@+id/bnt1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:backgroundTint="@color/azul_principal"
+            android:text="Buscar Factura"
+            android:textSize="28sp"
+            app:cornerRadius="15dp"
+            android:drawableLeft="@drawable/baseline_content_paste_search_24"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bnt2"
+        android:layout_below="@+id/bnt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="50dp"
+        app:cardBackgroundColor="#8003A9F4">
+
+        <Button
+            android:id="@+id/btnIngresarFactura"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_below="@+id/bnt2"
+            android:backgroundTint="@color/azul_principal"
+            android:text="Ingresar Factura"
+            android:textSize="28sp"
+            app:cornerRadius="15dp"
+            android:drawableLeft="@drawable/baseline_file_upload_24"
+            />
+    </com.google.android.material.card.MaterialCardView>
+
+
     <ImageView
         android:id="@+id/ivCerrarSesionFacturas"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/btnIngresarFactura"
+        android:layout_below="@+id/bnt2"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="160dp"

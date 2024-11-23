@@ -50,9 +50,9 @@ public class LoginActivity extends AppCompatActivity {
     private BeginSignInRequest signInRequest;
 
     private EditText etInputLoginUserEmail, etInputLoginUserPassword;
-    private Button btnIniciarSesion, btnRegistro,btnCargarImagen;
+    private Button btnIniciarSesion, btnRegistro,btnCargarImagen, btnSesionGoogle;
 
-    private ImageView ivLoginLogo,ivSesionGoogle;
+    private ImageView ivLoginLogo;
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
 
@@ -75,12 +75,12 @@ public class LoginActivity extends AppCompatActivity {
         etInputLoginUserPassword = findViewById(R.id.etInputLoginUserPassword);
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
         btnRegistro = findViewById(R.id.btnRegistro);
-        ivSesionGoogle = findViewById(R.id.ivSesionGoogle);
+        btnSesionGoogle = findViewById(R.id.btnSesionGoogle);
         btnCargarImagen = findViewById(R.id.btnCargarImagen);
 
         btnIniciarSesion.setOnClickListener(v -> loginUser());
         btnRegistro.setOnClickListener(v -> registerUser());
-        ivSesionGoogle.setOnClickListener(v -> signIn());
+        btnSesionGoogle.setOnClickListener(v -> signIn());
 
 
         auth = FirebaseAuth.getInstance();

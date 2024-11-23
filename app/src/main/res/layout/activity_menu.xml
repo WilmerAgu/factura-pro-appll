@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:background="@drawable/fondo_degradado"
         android:text="Factura Pro"
         android:textAlignment="center"
@@ -19,56 +19,84 @@
         android:textStyle="bold"
         android:gravity="center"/>
 
-    <Button
-        android:id="@+id/btnFacturas"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bnt1"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/azul_principal"
-        android:drawableLeft="@drawable/baseline_factura"
-        android:text="Facturas"
-        android:textSize="28sp"
-        app:cornerRadius="15dp" />
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="50dp"
+        app:cardBackgroundColor="#8003A9F4">
 
-    <Button
-        android:id="@+id/btnGastos"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/btnFacturas"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="15dp"
-        android:backgroundTint="@color/azul_principal"
-        android:drawableLeft="@drawable/baseline_gastos1"
-        android:text="Egresos"
-        android:textSize="28dp"
-        app:cornerRadius="15dp" />
+        <Button
+            android:id="@+id/btnFacturas"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:backgroundTint="@color/azul_principal"
+            android:drawableLeft="@drawable/baseline_factura"
+            android:text="Facturas"
+            android:textSize="28sp"
+            app:cornerRadius="15dp" />
+    </com.google.android.material.card.MaterialCardView>
 
-    <Button
-        android:id="@+id/btnReportes"
-        android:layout_width="0dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/btnGastos"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="15dp"
-        android:backgroundTint="@color/azul_principal"
-        android:drawableLeft="@drawable/baseline_insert_reporte"
-        android:text="Reportes"
-        android:textSize="28dp"
-        app:cornerRadius="15dp" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bnt2"
+        android:layout_below="@+id/bnt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="50dp"
+        app:cardBackgroundColor="#8003A9F4">
+
+        <Button
+            android:id="@+id/btnGastos"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:backgroundTint="@color/azul_principal"
+            android:drawableLeft="@drawable/baseline_gastos1"
+            android:text="Egresos"
+            android:textSize="28dp"
+            app:cornerRadius="15dp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bnt3"
+        android:layout_below="@+id/bnt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="50dp"
+        app:cardBackgroundColor="#8003A9F4">
+
+        <Button
+            android:id="@+id/btnReportes"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/azul_principal"
+            android:drawableLeft="@drawable/baseline_insert_reporte"
+            android:text="Reportes"
+            android:textSize="28dp"
+            app:cornerRadius="15dp" />
+    </com.google.android.material.card.MaterialCardView>
+
+
 
     <ImageView
         android:id="@+id/ivCerrarSesionMenu"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/btnReportes"
+        android:layout_below="@+id/bnt3"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="90dp"
