@@ -31,7 +31,6 @@ public class IngresarEgresoActivity extends AppCompatActivity {
     private Button btnGuardarEgreso, btnCancelarEgreso;
     private EditText etNumeroFacturaEgreso, etMontoEgreso, etFechaEgreso;
     private Spinner spCategoriaEgreso, spEstadoPago, spModoPago;
-    private ImageView ivCerrarSesionIngresarEgreso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

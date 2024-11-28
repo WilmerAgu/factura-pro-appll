@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     private BeginSignInRequest signInRequest;
 
     private EditText etInputLoginUserEmail, etInputLoginUserPassword;
-    private Button btnIniciarSesion, btnRegistro,btnCargarImagen, btnSesionGoogle;
+    private Button btnIniciarSesion, btnRegistro, btnSesionGoogle;
 
     private ImageView ivLoginLogo;
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
         btnRegistro = findViewById(R.id.btnRegistro);
         btnSesionGoogle = findViewById(R.id.btnSesionGoogle);
-        btnCargarImagen = findViewById(R.id.btnCargarImagen);
+
 
         btnIniciarSesion.setOnClickListener(v -> loginUser());
         btnRegistro.setOnClickListener(v -> registerUser());
@@ -126,16 +126,6 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Log.d("PhotoPicker", "No media selected");
         }
-        btnCargarImagen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // Launch the photo picker and let the user choose only images.
-                pickMedia.launch(new PickVisualMediaRequest.Builder()
-                        .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
-                        .build());
-            }
-        });
 
     });
 

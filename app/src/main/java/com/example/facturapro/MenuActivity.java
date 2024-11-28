@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity {
     private FirebaseAuth auth;
-    private Button btnFacturas, btnGastos, btnReportes;
+    private Button btnFacturas, btnGastos, btnReportes, btnGemini;
     private ImageView ivCerrarSesionMenu;
 
     @Override
@@ -33,6 +33,7 @@ public class MenuActivity extends AppCompatActivity {
         btnFacturas = findViewById(R.id.btnFacturas);
         btnGastos = findViewById(R.id.btnGastos);
         btnReportes = findViewById(R.id.btnReportes);
+        btnGemini = findViewById(R.id.btnGemini);
         ivCerrarSesionMenu = findViewById(R.id.ivCerrarSesionMenu);
 
 
@@ -57,6 +58,14 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( MenuActivity.this, ReportesActivity.class);
+                startActivity(intent
+                );
+            }
+        });
+        btnGemini.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( MenuActivity.this, GeminiActivity.class);
                 startActivity(intent
                 );
             }
