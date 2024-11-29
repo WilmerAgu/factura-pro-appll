@@ -56,7 +56,7 @@ public class IngresarFacturaActivity extends AppCompatActivity {
         etFecha.setClickable(true);
 
         // Configurar el Spinner con las categorías
-        String[] categorias = {"Selecciona una categoría", "Audífonos", "DDS", "Celular", "Tablet", "Laptop"};
+        String[] categorias = {"Selecciona una categoría", "Audífonos", "SSD", "Celular", "Tablet", "Laptop"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categorias);
         spinnerCategoria.setAdapter(adapter);
 

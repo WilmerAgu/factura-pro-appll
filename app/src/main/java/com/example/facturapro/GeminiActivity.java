@@ -22,14 +22,21 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.MoreExecutors;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.Executor;
 
 public class GeminiActivity extends AppCompatActivity {
     TextView tvResultado;
     EditText edGemini;
     Button btnGenerar;
-    ProgressBar progressBar; // Agregado para el spinner
+    ProgressBar progressBar; // Spinner de carga
     Executor executor;
+
+    // Datos estáticos para simular consulta
+    private final List<String> productos = Arrays.asList("Audífonos", "DDS", "Celular", "Tablet", "Laptop");
+    private final List<String> vendedores = Arrays.asList("Carlos Morales", "Tatiana Salas", "Camila Guzman", "Sergio Torres", "Luisa Gomez", "Daniel Salinas", "Ana Florez", "Andres Escobar", "Juan Quiroz", "Marcela Ocampo");
+    private final List<String> ciudades = Arrays.asList("Bogotá", "Medellín", "Cali", "Barranquilla", "Manizales");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,78 +44,98 @@ public class GeminiActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gemini);
 
-        // Configuración del layout principal para evitar solapamientos con barras del sistema
+        // Configuración del layout principal
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Referencias a los elementos del layout
+        // Inicializar vistas
         tvResultado = findViewById(R.id.tvResultado);
         edGemini = findViewById(R.id.edGemini);
         btnGenerar = findViewById(R.id.btnGenerar);
-        progressBar = findViewById(R.id.progressBar); // Referencia al ProgressBar
+        progressBar = findViewById(R.id.progressBar);
 
-        // Configurar el ejecutor para las operaciones asíncronas
         executor = MoreExecutors.directExecutor();
 
-        // Configurar el evento de clic del botón
-        btnGenerar.setOnClickListener(new View.OnClickListener() {
+        // Configurar evento de clic
+        btnGenerar.setOnClickListener(view -> procesarEntrada());
+    }
+
+    private void procesarEntrada() {
+        String userInput = edGemini.getText().toString().toLowerCase().trim();
+
+        if (userInput.isEmpty()) {
+            tvResultado.setText("Por favor, ingresa una pregunta.");
+            return;
+        }
+
+        // Verificar si la entrada corresponde a "productos", "vendedores" o "ciudades"
+        if (userInput.contains("productos")) {
+            mostrarDatos("productos");
+        } else if (userInput.contains("vendedores")) {
+            mostrarDatos("vendedores");
+        } else if (userInput.contains("ciudades")) {
+            mostrarDatos("ciudades");
+        } else {
+            generarContenido(userInput); // Usar el modelo generativo si no coincide
+        }
+    }
+
+    private void mostrarDatos(String tipo) {
+        String resultado;
+        switch (tipo) {
+            case "productos":
+                resultado = "Productos disponibles:\n" + String.join(", ", productos);
+                break;
+            case "vendedores":
+                resultado = "Vendedores disponibles:\n" + String.join(", ", vendedores);
+                break;
+            case "ciudades":
+                resultado = "Ciudades disponibles:\n" + String.join(", ", ciudades);
+                break;
+            default:
+                resultado = "Consulta no válida.";
+                break;
+        }
+
+        tvResultado.setText(resultado);
+    }
+
+    private void generarContenido(String userInput) {
+        progressBar.setVisibility(View.VISIBLE);
+        btnGenerar.setEnabled(false);
+
+        GenerativeModel gm = new GenerativeModel("gemini-1.5-flash", "API_KEY_AQUI");
+        GenerativeModelFutures model = GenerativeModelFutures.from(gm);
+
+        Content content = new Content.Builder()
+                .addText(userInput)
+                .build();
+
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
             @Override
-            public void onClick(View view) {
-                // Obtener el texto ingresado por el usuario
-                String userInput = edGemini.getText().toString();
-
-                // Validar que no esté vacío
-                if (userInput.isEmpty()) {
-                    tvResultado.setText("Por favor, ingresa una pregunta.");
-                    return;
-                }
-
-                // Mostrar el spinner y deshabilitar el botón mientras carga
-                progressBar.setVisibility(View.VISIBLE);
-                btnGenerar.setEnabled(false);
-
-                // Configuración del modelo generativo
-                GenerativeModel gm = new GenerativeModel(
-                        /* Nombre del modelo */ "gemini-1.5-flash",
-                        /* Clave de API */ "AIzaSyCIqA5bxuUuc4wlrcHoN78cUhcsFQnLQ_0"
-                );
-                GenerativeModelFutures model = GenerativeModelFutures.from(gm);
-
-                // Crear el contenido basado en la pregunta del usuario
-                Content content = new Content.Builder()
-                        .addText(userInput)
-                        .build();
-
-                // Llamada asíncrona al modelo para generar contenido
-                ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
-
-                Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
-                    @Override
-                    public void onSuccess(GenerateContentResponse result) {
-                        // Mostrar la respuesta en el TextView
-                        String resultText = result.getText();
-                        runOnUiThread(() -> {
-                            tvResultado.setText(resultText);
-                            progressBar.setVisibility(View.GONE);
-                            btnGenerar.setEnabled(true);
-                        });
-                    }
-
-                    @Override
-                    public void onFailure(Throwable t) {
-                        // Manejar errores y mostrar un mensaje
-                        runOnUiThread(() -> {
-                            tvResultado.setText("Error al generar la respuesta.");
-                            progressBar.setVisibility(View.GONE);
-                            btnGenerar.setEnabled(true);
-                        });
-                        t.printStackTrace();
-                    }
-                }, executor);
+            public void onSuccess(GenerateContentResponse result) {
+                String resultText = result.getText();
+                runOnUiThread(() -> {
+                    tvResultado.setText(resultText);
+                    progressBar.setVisibility(View.GONE);
+                    btnGenerar.setEnabled(true);
+                });
             }
-        });
+
+            @Override
+            public void onFailure(Throwable t) {
+                runOnUiThread(() -> {
+                    tvResultado.setText("Error al generar la respuesta.");
+                    progressBar.setVisibility(View.GONE);
+                    btnGenerar.setEnabled(true);
+                });
+                t.printStackTrace();
+            }
+        }, executor);
     }
 }
