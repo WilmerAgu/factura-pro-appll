@@ -157,7 +157,7 @@ public class InformeFacturaActivity extends AppCompatActivity {
     }
 
     private void cargarDatosSpinners() {
-        List<String> categorias = Arrays.asList("Audífonos", "DDS", "Celular", "Tablet", "Laptop");
+        List<String> categorias = Arrays.asList("Audífonos", "SSD", "Celular", "Tablet", "Laptop");
 
         List<String> vendedores = Arrays.asList("Selecciona un vendedor", "Carlos Morales", "Tatiana Salas",
                 "Camila Guzman","Sergio Torres", "Luisa Gomez", "Daniel Salinas", "Ana Florez",
